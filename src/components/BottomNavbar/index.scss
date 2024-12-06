@@ -1,11 +1,70 @@
 #bottomNavbar {
-  padding: 16px;
   background-color: #F1F1F1;
 
   .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .logo {
+      position: relative;
+      cursor: pointer;
+
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 10;
+        width: 500px;
+
+        .sublink {
+          color: black;
+          text-decoration: none;
+          padding: 5px 10px;
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+
+        .nested-dropdown {
+          position: relative;
+
+          .nested-menu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -115px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+
+            .nested-sublink {
+              color: black;
+              text-decoration: none;
+              padding: 3px;
+
+              &:hover {
+                background-color: #f0f0f0;
+              }
+            }
+          }
+
+          &:hover .nested-menu {
+            display: flex;
+          }
+        }
+      }
+    }
 
     .links {
       display: flex;
@@ -14,6 +73,8 @@
 
       .link {
         color: black;
+        text-decoration: none;
+        cursor: pointer;
       }
     }
   }
