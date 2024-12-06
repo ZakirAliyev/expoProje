@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mail</title>
+</head>
+<body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            width: 100%;
+        }
+
+        .icon-box-1 {
+            height: 150px;
+            background-color: #0b256a;
+
+            img {
+                width: 150px;
+            }
+        }
+
+        .icon-box-2 {
+            flex-direction: column;
+            height: 200px;
+
+            .p {
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            p {
+                line-height: 1.5;
+            }
+        }
+
+        .icon-box-3 {
+            background-color: #eee;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="box icon-box-1">
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/Apple-Logo.png" alt="Logo"/>
+    </div>
+    <div class="box icon-box-2">
+        <a href="https://www.google.com">
+            <p class="p">Reset Password</p>
+        </a>
+        <p>Thanks,</p>
+        <p>John Doe</p>
+    </div>
+    <div class="box icon-box-3">
+        <p>johndoe@gmail.com</p>
+    </div>
+</div>
+
+</body>
+</html>
