@@ -1,0 +1,38 @@
+#newProducts {
+  padding: 16px;
+
+  h2 {
+    text-align: center;
+    padding: 0 0 16px 0;
+  }
+
+  .box {
+    background-color: #F1F1F1;
+    margin-bottom: 16px;
+    padding: 16px;
+
+    .panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .title, .price {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .button {
+      width: 100%;
+      display: flex;
+
+      button {
+        margin: 0 auto;
+      }
+    }
+  }
+}

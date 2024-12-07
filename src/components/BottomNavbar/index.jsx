@@ -61,10 +61,10 @@ function BottomNavbar() {
                     </div>
                     <div className={"links"}>
                         <Link to={`/about`} className={"link"}>About</Link>
-                        <Link to={`/`} className={"link"}>New</Link>
-                        <Link to={`/`} className={"link"}>Discounts</Link>
+                        <Link to={`/new-products`} className={"link"}>New</Link>
+                        <Link to={`/discounts`} className={"link"}>Discounts</Link>
                         <Link to={`/`} className={"link"}>Bestsellers</Link>
-                        <Link to={`/`} className={"link"}>Terms</Link>
+                        <Link to={`/terms`} className={"link"}>Terms</Link>
                         <Link to={`/contact`} className={"link"}>Contact us</Link>
                     </div>
                 </div>

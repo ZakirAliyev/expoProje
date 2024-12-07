@@ -4,6 +4,9 @@ import LoginPage from "../pages/LoginPage/index.jsx";
 import About from "../pages/About/index.jsx";
 import Home from "../pages/Home/index.jsx";
 import ContactUs from "../pages/ContactUs/index.jsx";
+import Terms from "../pages/Terms/index.jsx";
+import NewProducts from "../pages/NewProducts/index.jsx";
+import Discounts from "../pages/Discounts/index.jsx";
 
 export const ROUTES = [
     {
@@ -29,6 +32,18 @@ export const ROUTES = [
             {
                 path: '/contact',
                 element: <ContactUs/>
+            },
+            {
+                path: '/terms',
+                element: <Terms/>
+            },
+            {
+                path: '/new-products',
+                element: <NewProducts/>
+            },
+            {
+                path: '/discounts',
+                element: <Discounts/>
             }
         ]
     }
