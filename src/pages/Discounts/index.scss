@@ -26,6 +26,16 @@
       padding: 10px;
     }
 
+    .priceWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .price1 {
+        text-decoration: line-through;
+      }
+    }
+
     .button {
       width: 100%;
       display: flex;
@@ -33,6 +43,20 @@
       button {
         margin: 0 auto;
       }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      height: 36px;
     }
   }
 }

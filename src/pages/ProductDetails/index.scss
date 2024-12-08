@@ -1,9 +1,30 @@
-#newProducts {
+#productDetails {
   padding: 16px;
+
+  span {
+    text-decoration: line-through;
+  }
+
+  .productImg {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
   h2 {
     text-align: center;
-    padding: 0 0 16px 0;
   }
 
   .box {
@@ -14,7 +35,7 @@
     .panel {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: end;
     }
 
     img {
@@ -33,19 +54,6 @@
       button {
         margin: 0 auto;
       }
-    }
-  }
-
-  .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      height: 36px;
     }
   }
 }

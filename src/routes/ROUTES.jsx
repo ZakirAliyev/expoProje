@@ -7,6 +7,7 @@ import ContactUs from "../pages/ContactUs/index.jsx";
 import Terms from "../pages/Terms/index.jsx";
 import NewProducts from "../pages/NewProducts/index.jsx";
 import Discounts from "../pages/Discounts/index.jsx";
+import ProductDetails from "../pages/ProductDetails/index.jsx";
 
 export const ROUTES = [
     {
@@ -44,6 +45,10 @@ export const ROUTES = [
             {
                 path: '/discounts',
                 element: <Discounts/>
+            },
+            {
+                path: `/products/:id`,
+                element: <ProductDetails/>
             }
         ]
     }
