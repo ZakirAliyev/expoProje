@@ -13,6 +13,11 @@
     margin: 0 auto;
 }
 
+.line {
+    height: 1px;
+    background: gray;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;

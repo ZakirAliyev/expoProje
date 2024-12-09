@@ -8,6 +8,9 @@ import Terms from "../pages/Terms/index.jsx";
 import NewProducts from "../pages/NewProducts/index.jsx";
 import Discounts from "../pages/Discounts/index.jsx";
 import ProductDetails from "../pages/ProductDetails/index.jsx";
+import Bestsellers from "../pages/Bestsellers/index.jsx";
+import Basket from "../components/Basket/index.jsx";
+import Wishlist from "../pages/Wishlist/index.jsx";
 
 export const ROUTES = [
     {
@@ -45,6 +48,18 @@ export const ROUTES = [
             {
                 path: '/discounts',
                 element: <Discounts/>
+            },
+            {
+                path: '/bestsellers',
+                element: <Bestsellers/>
+            },
+            {
+                path: '/basket',
+                element: <Basket/>
+            },
+            {
+                path: '/wishlist',
+                element: <Wishlist/>
             },
             {
                 path: `/products/:id`,

@@ -1,6 +1,19 @@
 #navbar {
-  padding: 16px;
+  padding: 16px 16px 0;
   background-color: #F1F1F1;
+
+  .actionWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: end;
+    margin-bottom: 16px;
+
+    .link {
+      color: black;
+    }
+  }
 
   .wrapper {
     display: flex;
