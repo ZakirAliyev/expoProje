@@ -1,5 +1,8 @@
 #bottomNavbar {
-  background-color: #F1F1F1;
+  background: linear-gradient(to right, #106853 40%, #FC8410 40%);
+  color: white;
+  font-size: 18px;
+  padding: 0 16px;
 
   .wrapper {
     display: flex;
@@ -69,13 +72,31 @@
     .links {
       display: flex;
       flex-direction: row;
-      gap: 10px;
+      gap: 30px;
 
       .link {
-        color: black;
+        color: white;
         text-decoration: none;
         cursor: pointer;
+        position: relative;
+        padding-bottom: 5px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background-color: white;
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
       }
     }
+
   }
 }

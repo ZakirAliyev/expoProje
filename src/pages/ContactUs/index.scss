@@ -1,10 +1,32 @@
 #contactUs {
+  padding: 50px 16px;
+
   h2, p {
     text-align: center;
   }
 
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
   .box {
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 32px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #106853;
+    }
+
+    .icon + div {
+      font-size: 18px;
+    }
   }
 
   iframe {
@@ -19,6 +41,34 @@
 
     textarea {
       resize: vertical;
+    }
+
+    input, textarea {
+      padding: 16px 12px;
+      margin: 20px 0 10px;
+      border-radius: 5px;
+      border: 1px solid #CED4DA;
+
+      &::placeholder {
+        font-size: 16px;
+        color: #494C50;
+        font-weight: 500;
+      }
+    }
+
+    button {
+      background-color: #106853;
+      color: white;
+      border: 1px solid #106853;
+      font-size: 15px;
+      padding: 14px;
+      margin-top: 15px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #FC8410;
+        border: 1px solid #FC8410;
+      }
     }
   }
 }

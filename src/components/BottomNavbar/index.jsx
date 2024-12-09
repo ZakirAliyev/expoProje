@@ -18,7 +18,9 @@ function BottomNavbar() {
                             height: '51px',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center',
+                            justifyContent: 'end',
+                            padding: '16px 16px 16px 0',
+                            width: '100%',
                         }}>Categories</p>
                         {hovered && (
                             <div className="dropdown">
