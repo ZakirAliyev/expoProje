@@ -1,11 +1,15 @@
 import './index.scss'
 import {useFormik} from "formik";
+import {usePostUserRegisterMutation} from "../../services/usersApi.jsx";
 
 function RegisterForm() {
+
+    const [postUserRegister] = usePostUserRegisterMutation()
 
     const formik = useFormik({
         initialValues: {
             companyName: '',
+            userName: '',
             fullName: '',
             address: '',
             email: '',
@@ -13,8 +17,9 @@ function RegisterForm() {
             confirmPassword: '',
             phoneNumber: '',
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: async values => {
+            const response = await postUserRegister(values).unwrap();
+            console.log(response)
         },
     });
 
@@ -94,6 +99,15 @@ function RegisterForm() {
                                 name="phoneNumber"
                                 onChange={formik.handleChange}
                                 value={formik.values.phoneNumber}
+                            />
+                        </div>
+                        <div className={"col-6"}>
+                            <input
+                                required
+                                placeholder={"Username"}
+                                name="userName"
+                                onChange={formik.handleChange}
+                                value={formik.values.userName}
                             />
                         </div>
                     </div>
