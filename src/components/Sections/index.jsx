@@ -1,31 +1,24 @@
 import './index.scss';
 import {useGetAllCategoriesTreeQuery, useGetAllProductsQuery} from "../../services/usersApi.jsx";
+import ProductCard from "../ProductCard/index.jsx";
+import {MutatingDots, ThreeCircles} from "react-loader-spinner";
+import AnyLoading from "../AnyLoading/index.jsx";
 
 function Sections() {
-    const {data: categoriesData} = useGetAllCategoriesTreeQuery();
-    const {data: productsData} = useGetAllProductsQuery();
-
-    const categories = categoriesData?.data;
+    const {data: productsData, isLoading: productLoading} = useGetAllProductsQuery();
     const products = productsData?.data;
 
     return (
         <section id="sections">
             <div className="container">
-                <h2>Categories</h2>
-                <div className="row">
-                    {categories && categories.map((item) => (
-                        <div className="box col-4" key={item.id}>
-                            {item.name}
-                        </div>
-                    ))}
-                </div>
                 <h2>Products</h2>
+                {productLoading && (
+                    <AnyLoading/>
+                )}
                 <div className="row">
                     {products && products.map((item) => (
-                        <div className="box1 col-4" key={item.id}>
-                            <img src={"https://exposite-001-site1.ntempurl.com/files/pictures/" + item.images[0]}
-                                 alt={"Image"}/>
-                            {item.name}
+                        <div className="col-3 col-md-6 col-sm-6 col-xs-12" key={item.id}>
+                            <ProductCard item={item}/>
                         </div>
                     ))}
                 </div>
