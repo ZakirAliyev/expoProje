@@ -1,11 +1,33 @@
 #banner {
   padding: 16px;
-  height: 300px;
-  width: 100%;
 
-  img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+  .wrapper {
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .col-9 {
+      padding: 12px 12px 12px 0;
+    }
+
+    .col-3 {
+      padding: 12px 0 12px 12px;
+    }
+
+    .col-12 {
+      padding: 6px 0 6px 0;
+    }
+
+    .col9img {
+      height: 506px;
+    }
+
+    .col3img {
+      height: 159px;
+    }
   }
 }

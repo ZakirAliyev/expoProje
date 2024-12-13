@@ -1,45 +1,26 @@
 import './index.scss';
-import { Link } from "react-router";
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
-import {IoIosSearch} from "react-icons/io";
+import {Link} from "react-router";
+import logo from '/src/assets/logo.png';
+import {HiOutlineBars4} from "react-icons/hi2";
 
 function Navbar() {
     return (
         <section id={"navbar"}>
             <div className={"container"}>
-                <div className={"actionWrapper"}>
-                    <button className={"button1"}>
-                        <Link to={`/login`} className={"link"}>Login</Link>
-                    </button>
-                    <button className={"button2"}>
-                        <Link to={`/register`} className={"link"}>Register</Link>
-                    </button>
-                </div>
                 <div className={"wrapper"}>
-                    <Link to={`/`} className={"logo"}>
-                        <img src={"https://los.az/lucky/images/logo/logo-header.svg"} alt={"Image"} />
-                    </Link>
-                    <div style={{
-                        width: "100%",
-                        display: 'flex',
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}>
-                        <div className={"searchWrapper"}>
-                            <input placeholder={"Search..."}/>
-                            <IoIosSearch className={"searchIcon"}/>
-                        </div>
+                    <div className={"logo"}>
+                        <Link to={"/"} className={"logo"}>
+                            <img src={logo} alt={"Image"}/>
+                        </Link>
                     </div>
                     <div className={"links"}>
-                        <Link to={`/basket`} className={"link"}>
-                            <FaShoppingCart className={"icon"}/>
-                            <span className={"badge"}>1</span>
-                        </Link>
-                        <Link to={`/wishlist`} className={"link"}>
-                            <FaHeart className={"icon"} />
-                            <span className={"badge"}>1</span>
-                        </Link>
+                        <Link className={"link"} to={`/about`}>Haqqımızda</Link>
+                        <Link className={"link"} to={`/new-products`}>Yeni məhsullar</Link>
+                        <Link className={"link"} to={`/discounts`}>Endirimlər</Link>
+                        <Link className={"link"} to={`/terms`}>Qaydalar</Link>
+                        <Link className={"link"} to={`/contact`}>Əlaqə</Link>
                     </div>
+                    <HiOutlineBars4 className={"icon"} />
                 </div>
             </div>
         </section>

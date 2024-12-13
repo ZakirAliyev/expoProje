@@ -27,7 +27,7 @@ function ContactUs() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin:'10px 0'
+                    margin: '10px 0'
                 }}>
                     <div className={"greenLine"}></div>
                 </div>
@@ -35,37 +35,41 @@ function ContactUs() {
                 <div className={"row"} style={{
                     marginTop: '50px'
                 }}>
-                    <div className={"col-4"}>
+                    <div className={"col-4 col-md-4 col-sm-12 col-xs-12"}>
                         <div className={"box"}>
                             <BsFillTelephoneFill className={"icon"}/>
-                            <div>(994) 99 832 07 77</div>
+                            <div>
+                                <a href={"tel:+994557519845"}>
+                                    +994 (55) 751-98-45
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div className={"col-4"}>
+                    <div className={"col-4 col-md-4 col-sm-12 col-xs-12"}>
                         <div className={"box"}>
                             <IoMdMail className={"icon"}/>
-                            <div>info@los.az</div>
+                            <div>
+                                <a href={"mailto:info@expohome.az"}>
+                                    info@expohome.az
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div className={"col-4"}>
+                    <div className={"col-4 col-md-4 col-sm-12 col-xs-12"}>
                         <div className={"box"}>
                             <MdLocationOn className={"icon"}/>
-                            <div>Xətai pr.2</div>
+                            <div>
+                                <a href={"https://maps.app.goo.gl/o6HjCBSgFgZLt1sh7"} target={"_blank"}>
+                                    46B Aşıq Molla Cümə, Bakı 1000
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className={"row"} style={{
                     marginTop: '20px'
                 }}>
-                    <div className={"col-6"}>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d759.8292178521255!2d49.84850038794004!3d40.379669215083226!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d0a3ea7028d%3A0xac9d73dbd66392c8!2s28%20May!5e0!3m2!1str!2saz!4v1733343820476!5m2!1str!2saz"
-                            style={{
-                                border: 0
-                            }} allowFullScreen="" loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div className={"col-6"}>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>
                         <form onSubmit={formik.handleSubmit}>
                             <h2>Application Form</h2>
                             <input
@@ -100,6 +104,12 @@ function ContactUs() {
                             />
                             <button type={"submit"}>Send</button>
                         </form>
+                    </div>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.8437328221657!2d49.8547375766896!3d40.41231247144035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4030870062b197d3%3A0x8360330b9e20b740!2sExpoHome%20by%20AK%C4%B0AB!5e0!3m2!1str!2saz!4v1734123179382!5m2!1str!2saz"
+                            style={{border: 0}} allowFullScreen="" loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

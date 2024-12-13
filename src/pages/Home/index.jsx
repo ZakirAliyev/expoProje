@@ -7,8 +7,8 @@ function Home() {
     return (
         <section id={"home"}>
             <Banner/>
-            <Sections/>
             <Brands/>
+            <Sections/>
         </section>
     );
 }

@@ -35,11 +35,23 @@ export const usersApi = createApi({
                 method: 'POST',
                 body: testFile,
             }),
+        }),
+        getAllCategoriesTree: builder.query({
+            query: () => ({
+                url: `/Categories/getAllCategoriesTree`,
+            }),
+        }),
+        getAllProducts: builder.query({
+            query: () => ({
+                url: `/Product/get-all-products`,
+            }),
         })
     }),
 })
 export const {
     usePostUserRegisterMutation,
     usePostUserLoginMutation,
-    usePostTestFileUploadMutation
+    usePostTestFileUploadMutation,
+    useGetAllCategoriesTreeQuery,
+    useGetAllProductsQuery
 } = usersApi

@@ -1,31 +1,33 @@
-import './index.scss'
+import './index.scss';
+import {useGetAllCategoriesTreeQuery, useGetAllProductsQuery} from "../../services/usersApi.jsx";
 
 function Sections() {
+    const {data: categoriesData} = useGetAllCategoriesTreeQuery();
+    const {data: productsData} = useGetAllProductsQuery();
+
+    const categories = categoriesData?.data;
+    const products = productsData?.data;
+
     return (
-        <section id={"sections"}>
-            <div className={"container"}>
-                <h2>Sections</h2>
-                <div className={"row"}>
-                    <div className={"box col-4"}>Section 1</div>
-                    <div className={"box col-4"}>Section 2</div>
-                    <div className={"box col-4"}>Section 3</div>
+        <section id="sections">
+            <div className="container">
+                <h2>Categories</h2>
+                <div className="row">
+                    {categories && categories.map((item) => (
+                        <div className="box col-4" key={item.id}>
+                            {item.name}
+                        </div>
+                    ))}
                 </div>
-                <div className={"row"}>
-                    <div className={"box col-4"}>Section 4</div>
-                    <div className={"box col-4"}>Section 5</div>
-                    <div className={"box col-4"}>Section 6</div>
-                </div>
-                <div className={"row"} style={{
-                    marginTop: '100px'
-                }}>
-                    <div className={"box col-4"}>Section 7</div>
-                    <div className={"box col-4"}>Section 8</div>
-                    <div className={"box col-4"}>Section 9</div>
-                </div>
-                <div className={"row"}>
-                    <div className={"box col-4"}>Section 10</div>
-                    <div className={"box col-4"}>Section 5</div>
-                    <div className={"box col-4"}>Section 6</div>
+                <h2>Products</h2>
+                <div className="row">
+                    {products && products.map((item) => (
+                        <div className="box1 col-4" key={item.id}>
+                            <img src={"https://exposite-001-site1.ntempurl.com/files/pictures/" + item.images[0]}
+                                 alt={"Image"}/>
+                            {item.name}
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

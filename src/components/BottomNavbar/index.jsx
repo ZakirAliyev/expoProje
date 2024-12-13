@@ -1,6 +1,10 @@
 import './index.scss';
 import {Link} from "react-router";
 import {useState} from "react";
+import {HiOutlineSquares2X2} from "react-icons/hi2";
+import {BsHandbag} from "react-icons/bs";
+import {LuUserRound} from "react-icons/lu";
+import {BiUser} from "react-icons/bi";
 
 function BottomNavbar() {
     const [hovered, setHovered] = useState(false);
@@ -9,65 +13,19 @@ function BottomNavbar() {
         <section id={"bottomNavbar"}>
             <div className={"container"}>
                 <div className={"wrapper"}>
-                    <div
-                        className={"logo"}
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
-                    >
-                        <p style={{
-                            height: '51px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'end',
-                            padding: '16px 16px 16px 0',
-                            width: '100%',
-                        }}>Categories</p>
-                        {hovered && (
-                            <div className="dropdown">
-                                <Link to={`/office`} className="sublink">Office Supplies</Link>
-                                <Link to={`/food`} className="sublink">Food & Drinks</Link>
-                                <Link to={`/tools`} className="sublink">Tools</Link>
-                                <div className="nested-dropdown">
-                                    <span className="sublink">New Year</span>
-                                    <div className="nested-menu">
-                                        <div className={"row"}>
-                                            <div className={"col-4"}>
-                                                <Link to={`/trees`} className="nested-sublink">New Year Trees</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/decorations`} className="nested-sublink">Decorations</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/gifts`} className="nested-sublink">Gift Sets</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/gifts`} className="nested-sublink">Gift Sets</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/trees`} className="nested-sublink">New Year Trees</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/decorations`} className="nested-sublink">Decorations</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/gifts`} className="nested-sublink">Gift Sets</Link>
-                                            </div>
-                                            <div className={"col-4"}>
-                                                <Link to={`/gifts`} className="nested-sublink">Gift Sets</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                    <div className={"catalogWrapper"}>
+                        <HiOutlineSquares2X2 className={"icon"}/>
+                        <span>Kataloq</span>
                     </div>
-                    <div className={"links"}>
-                        <Link to={`/about`} className={"link"}>About</Link>
-                        <Link to={`/new-products`} className={"link"}>New</Link>
-                        <Link to={`/discounts`} className={"link"}>Discounts</Link>
-                        <Link to={`/bestsellers`} className={"link"}>Bestsellers</Link>
-                        <Link to={`/terms`} className={"link"}>Terms</Link>
-                        <Link to={`/contact`} className={"link"}>Contact us</Link>
+                    <input placeholder={"Axtar..."}/>
+                    <div className={"actionWrapper"}>
+                        <BsHandbag className={"icon"}/>
+                        <div className={"line1"}></div>
+                        <div className={"buttonWrapper"}>
+                            <button className={"button"}>Register</button>
+                            <button>Login</button>
+                        </div>
+                        <BiUser className={"icon1 icon"} />
                     </div>
                 </div>
             </div>

@@ -1,6 +1,10 @@
 #contactUs {
   padding: 50px 16px;
 
+  a {
+    color: #494C50;
+  }
+
   h2, p {
     text-align: center;
   }
@@ -17,11 +21,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-radius: 5px;
 
     .icon {
       font-size: 40px;
       margin-bottom: 30px;
-      color: #106853;
+      color: #0DA5B5;
     }
 
     .icon + div {
@@ -32,6 +37,8 @@
   iframe {
     width: 100%;
     height: 450px;
+    margin-top: 25px;
+    border-radius: 15px;
   }
 
   form {
@@ -57,9 +64,9 @@
     }
 
     button {
-      background-color: #106853;
+      background-color: #0DA5B5;
       color: white;
-      border: 1px solid #106853;
+      border: 1px solid #0DA5B5;
       font-size: 15px;
       padding: 14px;
       margin-top: 15px;
