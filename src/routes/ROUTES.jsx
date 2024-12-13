@@ -11,6 +11,7 @@ import ProductDetails from "../pages/ProductDetails/index.jsx";
 import Bestsellers from "../pages/Bestsellers/index.jsx";
 import Basket from "../components/Basket/index.jsx";
 import Wishlist from "../pages/Wishlist/index.jsx";
+import TestFileUpload from "../pages/TestFileUpload/index.jsx";
 
 export const ROUTES = [
     {
@@ -60,6 +61,10 @@ export const ROUTES = [
             {
                 path: '/wishlist',
                 element: <Wishlist/>
+            },
+            {
+                path: '/file',
+                element: <TestFileUpload/>
             },
             {
                 path: `/products/:id`,

@@ -21,8 +21,25 @@ export const usersApi = createApi({
                 headers: {'Content-Type': 'application/json'}
             }),
         }),
+        postUserLogin: builder.mutation({
+            query: (user) => ({
+                url: `/UserAccount/login`,
+                method: 'POST',
+                body: user,
+                headers: {'Content-Type': 'application/json'}
+            }),
+        }),
+        postTestFileUpload: builder.mutation({
+            query: (testFile) => ({
+                url: `/TestFile/upload-multiple`,
+                method: 'POST',
+                body: testFile,
+            }),
+        })
     }),
 })
 export const {
-    usePostUserRegisterMutation
+    usePostUserRegisterMutation,
+    usePostUserLoginMutation,
+    usePostTestFileUploadMutation
 } = usersApi
