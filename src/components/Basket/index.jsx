@@ -14,7 +14,6 @@ function Basket() {
                                 <th>Məhsul adı</th>
                                 <th>Qiymət</th>
                                 <th>Say</th>
-                                <th>Rəng</th>
                                 <th>Cəmi</th>
                                 <th></th>
                             </tr>
@@ -37,7 +36,6 @@ function Basket() {
                                         <button className="increase">+</button>
                                     </div>
                                 </td>
-                                <td>-</td>
                                 <td>33.00 $</td>
                                 <td>
                                     <button className="remove-btn">X</button>

@@ -14,6 +14,16 @@
     margin: 0 auto;
 }
 
+table, th, td, tr, thead, tbody {
+    text-align: center !important;
+}
+
+.iconcate {
+    font-size: 18px;
+    color: #777777;
+    cursor: pointer;
+}
+
 button, a {
     cursor: pointer;
 }

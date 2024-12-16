@@ -36,22 +36,40 @@ export const usersApi = createApi({
                 body: testFile,
             }),
         }),
+        getAllProducts: builder.query({
+            query: () => ({
+                url: `/Product/get-all-products`,
+            }),
+        }),
+
         getAllCategoriesTree: builder.query({
             query: () => ({
                 url: `/Categories/getAllCategoriesTree`,
             }),
         }),
-        getAllProducts: builder.query({
-            query: () => ({
-                url: `/Product/get-all-products`,
+        postNewCategory: builder.mutation({
+            query: (categoryData) => ({
+                url: `/Categories/create-category`,
+                method: 'POST',
+                body: categoryData,
             }),
-        })
+        }),
+        putCategory: builder.mutation({
+            query: (categoryData) => ({
+                url: `/Categories/update-category`,
+                method: 'PUT',
+                body: categoryData,
+            }),
+        }),
     }),
 })
 export const {
     usePostUserRegisterMutation,
     usePostUserLoginMutation,
     usePostTestFileUploadMutation,
+    useGetAllProductsQuery,
+
     useGetAllCategoriesTreeQuery,
-    useGetAllProductsQuery
+    usePostNewCategoryMutation,
+    usePutCategoryMutation
 } = usersApi

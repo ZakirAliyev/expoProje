@@ -13,6 +13,8 @@ import Basket from "../components/Basket/index.jsx";
 import Wishlist from "../pages/Wishlist/index.jsx";
 import TestFileUpload from "../pages/TestFileUpload/index.jsx";
 import AdminPanel from "../pages/AdminPanel/index.jsx";
+import ForgotPassword from "../components/ForgotPassword/index.jsx";
+import RenewPassword from "../components/RenewPassword/index.jsx";
 
 export const ROUTES = [
     {
@@ -72,8 +74,12 @@ export const ROUTES = [
                 element: <ProductDetails/>
             },
             {
-                path: `/cp`,
-                element: <AdminPanel/>
+                path: `/forgot-password`,
+                element: <ForgotPassword/>
+            },
+            {
+                path: `/renew-password`,
+                element: <RenewPassword/>
             }
         ]
     },
