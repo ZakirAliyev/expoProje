@@ -69,7 +69,7 @@ function LoginForm() {
                                 <p>Hesabınız</p>
                                 <p>yoxdur?</p>
                             </div>
-                            <Link to={`/login`}>
+                            <Link to={`/register`}>
                                 <button className={"butt"}>
                                     Qeydiyyatdan<br/>keç
                                 </button>
