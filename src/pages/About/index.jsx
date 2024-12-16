@@ -1,15 +1,18 @@
 import './index.scss'
-import lucky from "/src/assets/lucky.jpeg"
+import lucky from "/src/assets/logo.png"
 
 function About() {
     return (
         <section id={"about"}>
             <div className="container">
-                <h2 className={"h2"}>About</h2>
-                <p className={"p"}>Home Page / About</p>
+                <h2 className={"h2"}>Haqqımızda</h2>
+                <div className={"lineWrapper"}>
+                    <div className={"greenLine"}></div>
+                </div>
+                <p className={"p"}>Ana səhifə / Haqqımızda</p>
                 <div className={"row"}>
-                    <div className={"col-6"}>
-                        <h2>About us</h2>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>
+                        <h2>Şirkət haqqında</h2>
                         <p>Şirkətimiz, ofisinizin gündəlik təchizatı üçün zəruri olan dəftərxana ləvazimatlarının, su,
                             çay, kofe kimi daimi istifadə edilən qida məhsullarının, gigiyena və təmizlik vasitələrinin,
                             daşınan və daşınmaz hər növ inventarın (ofis mebel dəstləri, kompyuter və onun yan
@@ -39,7 +42,7 @@ function About() {
                             həyata keçiriləcəyinə təminat veririk.
                         </p>
                     </div>
-                    <div className={"col-6 box"}>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12 box"}>
                         <img src={lucky} alt={"Image"}/>
                     </div>
                 </div>

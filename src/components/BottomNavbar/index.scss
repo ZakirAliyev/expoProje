@@ -72,16 +72,29 @@
           height: 40px;
           padding: 0 20px;
           font-size: 16px;
+          font-weight: 500;
           background-color: rgba(13, 165, 181, 1);
           border: 1px solid rgba(13, 165, 181, 1);
           border-radius: 5px;
           color: white;
+
+          &:hover {
+            background-color: #454545;
+            color: white;
+            border: 1px solid #454545;
+          }
         }
 
         .button {
           background-color: white;
-          color: rgba(69, 69, 69, 1);
+          color: #454545;
           font-weight: 500;
+
+          &:hover {
+            border: 1px solid #454545;
+            background-color: #454545;
+            color: white;
+          }
         }
       }
     }

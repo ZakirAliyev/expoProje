@@ -1,8 +1,7 @@
 import './index.scss';
-import {useGetAllCategoriesTreeQuery, useGetAllProductsQuery} from "../../services/usersApi.jsx";
-import ProductCard from "../ProductCard/index.jsx";
-import {MutatingDots, ThreeCircles} from "react-loader-spinner";
+import {useGetAllProductsQuery} from "../../services/usersApi.jsx";
 import AnyLoading from "../AnyLoading/index.jsx";
+import ProductsSwiper from "../ProductsSwiper/index.jsx";
 
 function Sections() {
     const {data: productsData, isLoading: productLoading} = useGetAllProductsQuery();
@@ -11,17 +10,16 @@ function Sections() {
     return (
         <section id="sections">
             <div className="container">
-                <h2>Products</h2>
+                <h2>Məhsullar</h2>
+                <div className={"lineWrapper"}>
+                    <div className={"greenLine"} style={{
+                        marginBottom: '20px'
+                    }}></div>
+                </div>
                 {productLoading && (
                     <AnyLoading/>
                 )}
-                <div className="row">
-                    {products && products.map((item) => (
-                        <div className="col-3 col-md-6 col-sm-6 col-xs-12" key={item.id}>
-                            <ProductCard item={item}/>
-                        </div>
-                    ))}
-                </div>
+                <ProductsSwiper/>
             </div>
         </section>
     );

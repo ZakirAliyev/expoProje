@@ -21,14 +21,8 @@ function ContactUs() {
     return (
         <section id={"contactUs"}>
             <div className={"container"}>
-                <h2>Contact us</h2>
-                <div style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '10px 0'
-                }}>
+                <h2 className={"h2h2"}>Contact us</h2>
+                <div className={"lineWrapper"}>
                     <div className={"greenLine"}></div>
                 </div>
                 <p>Home Page / Contact us</p>

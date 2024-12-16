@@ -12,6 +12,7 @@ import Bestsellers from "../pages/Bestsellers/index.jsx";
 import Basket from "../components/Basket/index.jsx";
 import Wishlist from "../pages/Wishlist/index.jsx";
 import TestFileUpload from "../pages/TestFileUpload/index.jsx";
+import AdminPanel from "../pages/AdminPanel/index.jsx";
 
 export const ROUTES = [
     {
@@ -69,7 +70,15 @@ export const ROUTES = [
             {
                 path: `/products/:id`,
                 element: <ProductDetails/>
+            },
+            {
+                path: `/cp`,
+                element: <AdminPanel/>
             }
         ]
+    },
+    {
+        path: '/cp',
+        element: <AdminPanel/>,
     }
 ];

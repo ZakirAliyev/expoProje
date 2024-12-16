@@ -6,10 +6,13 @@ function Terms() {
     return (
         <section id={"terms"}>
             <div className="container">
-                <h2 className={"h2"}>Terms</h2>
-                <p className={"p"}>Home Page / Terms</p>
+                <h2 className={"h2"}>Qaydalar</h2>
+                <div className={"lineWrapper"}>
+                    <div className={"greenLine"}></div>
+                </div>
+                <p className={"p"}>Ana səhifə / Qaydalar</p>
                 <div className={"row"}>
-                    <div className={"col-6"}>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>
                         <h2>Çatdırılma</h2>
                         <p>
                             Çatdırılma qiymətləri:
@@ -28,7 +31,7 @@ function Terms() {
                             xidmətləri ilə əlaqə saxlamağınız xahiş olunur.
                         </p>
                     </div>
-                    <div className={"col-6 box"}>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12 box"}>
                         <img
                             src={car}
                             alt={"Image"}
@@ -36,7 +39,7 @@ function Terms() {
                     </div>
                 </div>
                 <div className={"row"}>
-                    <div className={"col-6"}>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>
                         <h2>Geri qaytarilma</h2>
                         <p>
                             Lucky Office Support-dan alınan malların dəyişdirilməsi və ya geri qaytarılması qaydaları
@@ -106,7 +109,7 @@ function Terms() {
                             </li>
                         </ul>
                     </div>
-                    <div className={"col-6 box"}>
+                    <div className={"col-6 col-md-6 col-sm-12 col-xs-12 box"}>
                         <img
                             src={terms1}
                             alt={"Image"}

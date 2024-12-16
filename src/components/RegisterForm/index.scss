@@ -1,10 +1,153 @@
 #registerForm {
-  padding: 16px;
+
+  .coll {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    p {
+      color: #454545;
+      font-weight: 700;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .butt {
+      margin-top: 20px;
+      background-color: #0DA5B5;
+      color: white;
+      padding: 0 20px;
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #0DA5B5;
+      font-size: 18px;
+      font-weight: 500;
+
+      &:hover {
+        background-color: white;
+        color: #0DA5B5;
+      }
+    }
+
+    .logo {
+      max-width: 150px;
+      width: 100%;
+    }
+  }
+
+  .col-9, .col-md-9, .col-sm-9, .col-xs-9 {
+    padding: 0;
+  }
+
+  .row1 {
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    border-radius: 20px;
+    margin: 30px 0;
+  }
+
+  .error {
+    color: white;
+    margin-top: 5px;
+  }
+
   h2 {
     text-align: center;
   }
 
   input {
     width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+    border-radius: 15px;
+    outline: none;
+    border: 1px solid white;
+  }
+
+  form {
+    background-color: #0DA5B5;
+    padding: 48px 16px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+
+    h2 {
+      color: white;
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        margin-top: 20px;
+        height: 40px;
+        padding: 0 30px;
+        border-radius: 15px;
+        outline: none;
+        border: 1px solid white;
+        color: #0DA5B5;
+        font-weight: 600;
+        font-size: 20px;
+        background-color: white;
+
+        &:hover {
+          background-color: #0DA5B5;
+          color: white;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+
+    .container {
+      padding: 16px;
+    }
+    form {
+      padding: 48px 0;
+      border-radius: 0px;
+    }
+
+    .row1 {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .coll {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      padding: 40px 0;
+
+      .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+
+      img {
+        display: none;
+      }
+
+      p {
+        color: #454545;
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+      }
+      .butt {
+        margin: 0;
+      }
+
+      .logo {
+        max-width: 150px;
+        width: 100%;
+      }
+    }
   }
 }

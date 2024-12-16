@@ -7,7 +7,7 @@ import {Autoplay, Navigation} from 'swiper/modules';
 
 export default function BannerSwiper() {
     return (
-        <>
+        <section id={"bannerSwiper"}>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -36,6 +36,6 @@ export default function BannerSwiper() {
                         alt={"Image"} className={"col9img"}/>
                 </SwiperSlide>
             </Swiper>
-        </>
+        </section>
     );
 }

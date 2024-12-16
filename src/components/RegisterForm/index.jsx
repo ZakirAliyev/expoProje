@@ -1,8 +1,12 @@
 import './index.scss';
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 import * as Yup from 'yup';
-import { usePostUserRegisterMutation } from "../../services/usersApi.jsx";
+import {usePostUserRegisterMutation} from "../../services/usersApi.jsx";
 import Swal from "sweetalert2";
+import {useState} from "react";
+import {ThreeCircles} from "react-loader-spinner";
+import expo from '/src/assets/logo.png'
+import {Link} from "react-router";
 
 function RegisterForm() {
     const [postUserRegister] = usePostUserRegisterMutation();
@@ -43,6 +47,8 @@ function RegisterForm() {
             .required("Telefon nömrəsi tələb olunur"),
     });
 
+    const [loading, setLoading] = useState(false);
+
     const formik = useFormik({
         initialValues: {
             userName: '',
@@ -54,8 +60,9 @@ function RegisterForm() {
             address: '',
             phoneNumber: '',
         },
-        onSubmit: async (values) => {
+        onSubmit: async (values, {resetForm}) => {
             try {
+                setLoading(true);
                 const response = await postUserRegister(values).unwrap();
 
                 if (response?.statusCode === 201) {
@@ -66,6 +73,7 @@ function RegisterForm() {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    resetForm()
                 }
             } catch (error) {
                 console.log(error)
@@ -77,6 +85,7 @@ function RegisterForm() {
                     timer: 1500,
                 });
             }
+            setLoading(false)
         },
         validationSchema: SignupSchema,
     });
@@ -84,117 +93,138 @@ function RegisterForm() {
     return (
         <section id="registerForm">
             <div className="container">
-                <h2>Register</h2>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className="row">
-                        <div className="col-6">
-                            <input
-                                placeholder="Company name"
-                                name="companyName"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.companyName}
-                            />
-                            {formik.touched.companyName && formik.errors.companyName && (
-                                <div className="error">{formik.errors.companyName}</div>
-                            )}
-                        </div>
-                        <div className="col-6">
-                            <input
-                                placeholder="Full Name"
-                                name="fullName"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.fullName}
-                            />
-                            {formik.touched.fullName && formik.errors.fullName && (
-                                <div className="error">{formik.errors.fullName}</div>
-                            )}
+                <div className={"row row1"}>
+                    <div className={"col-3 col-md-3 col-sm-12 col-xs-12 coll"}>
+                        <img className={"logo"} src={expo} alt={"Image"}/>
+                        <div className={"wrapper"}>
+                            <div className={"textWrapper"}>
+                                <p>Hesabınız</p>
+                                <p>varmı?</p>
+                            </div>
+                            <Link to={`/login`}>
+                                <button className={"butt"}>Daxil ol</button>
+                            </Link>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-6">
-                            <input
-                                placeholder="Address"
-                                name="address"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.address}
-                            />
-                            {formik.touched.address && formik.errors.address && (
-                                <div className="error">{formik.errors.address}</div>
-                            )}
-                        </div>
-                        <div className="col-6">
-                            <input
-                                placeholder="E-mail"
-                                type="email"
-                                name="email"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.email}
-                            />
-                            {formik.touched.email && formik.errors.email && (
-                                <div className="error">{formik.errors.email}</div>
-                            )}
-                        </div>
+                    <div className={"col-9 col-md-9 col-sm-12 col-xs-12"}>
+                        <form onSubmit={formik.handleSubmit}>
+                            <h2>Qeydiyyat</h2>
+                            <div className="row">
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="Şirkət adı"
+                                        name="companyName"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.companyName}
+                                    />
+                                    {formik.touched.companyName && formik.errors.companyName && (
+                                        <div className="error">{formik.errors.companyName}</div>
+                                    )}
+                                </div>
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="Ad və soyad"
+                                        name="fullName"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.fullName}
+                                    />
+                                    {formik.touched.fullName && formik.errors.fullName && (
+                                        <div className="error">{formik.errors.fullName}</div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="Ünvan"
+                                        name="address"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.address}
+                                    />
+                                    {formik.touched.address && formik.errors.address && (
+                                        <div className="error">{formik.errors.address}</div>
+                                    )}
+                                </div>
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="E-poçt ünvanı"
+                                        type="email"
+                                        name="email"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.email}
+                                    />
+                                    {formik.touched.email && formik.errors.email && (
+                                        <div className="error">{formik.errors.email}</div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="Şifrə"
+                                        type="password"
+                                        name="password"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.password}
+                                    />
+                                    {formik.touched.password && formik.errors.password && (
+                                        <div className="error">{formik.errors.password}</div>
+                                    )}
+                                </div>
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="Şifrə təkrarı"
+                                        type="password"
+                                        name="confirmPassword"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.confirmPassword}
+                                    />
+                                    {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                                        <div className="error">{formik.errors.confirmPassword}</div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="Telefon"
+                                        name="phoneNumber"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.phoneNumber}
+                                    />
+                                    {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                                        <div className="error">{formik.errors.phoneNumber}</div>
+                                    )}
+                                </div>
+                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input
+                                        placeholder="İstifadəçi adı"
+                                        name="userName"
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        value={formik.values.userName}
+                                    />
+                                    {formik.touched.userName && formik.errors.userName && (
+                                        <div className="error">{formik.errors.userName}</div>
+                                    )}
+                                </div>
+                            </div>
+                            <div className={"button"}>
+                                <button type="submit">
+                                    {!loading ? 'Təstiq et' :
+                                        <ThreeCircles className={"buttonColor"} color={'#454545'} height={'25'}/>}
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div className="row">
-                        <div className="col-6">
-                            <input
-                                placeholder="Password"
-                                type="password"
-                                name="password"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.password}
-                            />
-                            {formik.touched.password && formik.errors.password && (
-                                <div className="error">{formik.errors.password}</div>
-                            )}
-                        </div>
-                        <div className="col-6">
-                            <input
-                                placeholder="Confirm Password"
-                                type="password"
-                                name="confirmPassword"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.confirmPassword}
-                            />
-                            {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-                                <div className="error">{formik.errors.confirmPassword}</div>
-                            )}
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-6">
-                            <input
-                                placeholder="Phone Number"
-                                name="phoneNumber"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.phoneNumber}
-                            />
-                            {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-                                <div className="error">{formik.errors.phoneNumber}</div>
-                            )}
-                        </div>
-                        <div className="col-6">
-                            <input
-                                placeholder="Username"
-                                name="userName"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.userName}
-                            />
-                            {formik.touched.userName && formik.errors.userName && (
-                                <div className="error">{formik.errors.userName}</div>
-                            )}
-                        </div>
-                    </div>
-                    <button type="submit">Register</button>
-                </form>
+                </div>
             </div>
         </section>
     );
