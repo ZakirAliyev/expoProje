@@ -1,4 +1,6 @@
 #forgotPassword {
+  background-color: #f4f4f4;
+  margin: 100px 0;
 
   p {
     text-align: center;
@@ -12,6 +14,8 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
 
     p {
       color: #454545;

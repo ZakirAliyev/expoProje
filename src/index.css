@@ -9,6 +9,10 @@
     transition: all .2s ease;
 }
 
+body {
+    background-color: #fafafa;
+}
+
 .container {
     max-width: 1320px;
     margin: 0 auto;

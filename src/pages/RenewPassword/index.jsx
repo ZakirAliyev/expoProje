@@ -12,7 +12,6 @@ function RenewPassword() {
     const [postResetPassword] = usePostResetPasswordMutation();
     const [loading, setLoading] = useState(false);
 
-    // URL-dən email və tokeni al
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
     const email = urlParams.get('email');
@@ -67,7 +66,6 @@ function RenewPassword() {
         validationSchema: SignupSchema
     });
 
-    // URL-dən gələn email və tokeni formik-ə ötür
     useEffect(() => {
         if (email && token) {
             formik.setValues({

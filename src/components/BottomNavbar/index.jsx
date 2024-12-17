@@ -3,8 +3,12 @@ import {HiOutlineSquares2X2} from "react-icons/hi2";
 import {BsHandbag} from "react-icons/bs";
 import {BiUser} from "react-icons/bi";
 import {Link} from "react-router";
+import {useNavigate} from "react-router-dom";
 
 function BottomNavbar() {
+
+    const navigate = useNavigate();
+
     return (
         <section id={"bottomNavbar"}>
             <div className={"container"}>
@@ -15,7 +19,9 @@ function BottomNavbar() {
                     </div>
                     <input placeholder={"Axtar..."}/>
                     <div className={"actionWrapper"}>
-                        <BsHandbag className={"icon"}/>
+                        <BsHandbag className={"icon"} onClick={() => {
+                            navigate('/basket')
+                        }}/>
                         <div className={"line1"}></div>
                         <div className={"buttonWrapper"}>
 

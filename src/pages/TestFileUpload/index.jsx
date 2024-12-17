@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { usePostTestFileUploadMutation } from '../../services/usersApi.jsx';
+import React, {useState} from 'react';
+import {usePostTestFileUploadMutation} from '../../services/usersApi.jsx';
 
 function TestFileUpload() {
     const [selectedFiles, setSelectedFiles] = useState([]);
 
-    const [postTestFileUpload, { isLoading, isError, isSuccess }] = usePostTestFileUploadMutation();
+    const [postTestFileUpload, {isLoading, isError, isSuccess}] = usePostTestFileUploadMutation();
 
     const handleFileChange = (event) => {
         setSelectedFiles(event.target.files);
@@ -31,13 +31,15 @@ function TestFileUpload() {
     };
 
     return (
-        <section style={{ padding: '16px' }}>
-            <input type="file" multiple onChange={handleFileChange} />
-            <button onClick={handleUpload} style={{ marginLeft: '8px' }} disabled={isLoading}>
-                {isLoading ? 'Uploading...' : 'Upload'}
-            </button>
-            {isError && <p style={{ color: 'red' }}>Error uploading files. Please try again.</p>}
-            {isSuccess && <p style={{ color: 'green' }}>Files uploaded successfully!</p>}
+        <section style={{padding: '16px', margin: '250px 0'}}>
+            <div className={"container"}>
+                <input type="file" multiple onChange={handleFileChange}/>
+                <button onClick={handleUpload} style={{marginLeft: '8px'}} disabled={isLoading}>
+                    {isLoading ? 'Uploading...' : 'Upload'}
+                </button>
+                {isError && <p style={{color: 'red'}}>Error uploading files. Please try again.</p>}
+                {isSuccess && <p style={{color: 'green'}}>Files uploaded successfully!</p>}
+            </div>
         </section>
     );
 }

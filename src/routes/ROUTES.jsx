@@ -9,12 +9,12 @@ import NewProducts from "../pages/NewProducts/index.jsx";
 import Discounts from "../pages/Discounts/index.jsx";
 import ProductDetails from "../pages/ProductDetails/index.jsx";
 import Bestsellers from "../pages/Bestsellers/index.jsx";
-import Basket from "../components/Basket/index.jsx";
+import Basket from "../pages/Basket/index.jsx";
 import Wishlist from "../pages/Wishlist/index.jsx";
 import TestFileUpload from "../pages/TestFileUpload/index.jsx";
 import AdminPanel from "../pages/AdminPanel/index.jsx";
-import ForgotPassword from "../components/ForgotPassword/index.jsx";
-import RenewPassword from "../components/RenewPassword/index.jsx";
+import ForgotPassword from "../pages/ForgotPassword/index.jsx";
+import RenewPassword from "../pages/RenewPassword/index.jsx";
 
 export const ROUTES = [
     {
