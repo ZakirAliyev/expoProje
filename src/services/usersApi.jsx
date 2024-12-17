@@ -61,6 +61,27 @@ export const usersApi = createApi({
                 body: categoryData,
             }),
         }),
+
+        getProductById: builder.query({
+            query: (id) => ({
+                url: `/Product/get-product-by-id/${id}`,
+            }),
+        }),
+
+        postForgotPassword: builder.mutation({
+            query: (email) => ({
+                url: `/UserAccount/forgot-password`,
+                method: 'POST',
+                body: email,
+            }),
+        }),
+        postResetPassword: builder.mutation({
+            query: (data) => ({
+                url: `/UserAccount/reset-password`,
+                method: 'POST',
+                body: data,
+            }),
+        }),
     }),
 })
 export const {
@@ -71,5 +92,10 @@ export const {
 
     useGetAllCategoriesTreeQuery,
     usePostNewCategoryMutation,
-    usePutCategoryMutation
+    usePutCategoryMutation,
+
+    useGetProductByIdQuery,
+
+    usePostForgotPasswordMutation,
+    usePostResetPasswordMutation
 } = usersApi

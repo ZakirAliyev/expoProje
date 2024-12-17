@@ -1,8 +1,11 @@
 import './index.scss'
 import {FaRegHeart} from "react-icons/fa";
 import {IoCartOutline} from "react-icons/io5";
+import {useNavigate} from "react-router-dom";
 
 function ProductCard({item}) {
+
+    const navigate = useNavigate();
 
     return (
         <section id={"productCard"}>
@@ -14,7 +17,11 @@ function ProductCard({item}) {
                             {item?.isDiscount ? 'Endirim' : 'Yeni'}
                         </div>
                     </div>
-                    <div className={"imageWrapper"}>
+                    <div className={"imageWrapper"} onClick={() => {
+                        navigate(`/products/${item?.id}`)
+                    }} style={{
+                        cursor: "pointer"
+                    }}>
                         <img src={"https://exposite-001-site1.ntempurl.com/files/pictures/" + item?.images[0]}
                              alt={"Image"}/>
                     </div>

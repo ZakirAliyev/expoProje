@@ -2,7 +2,7 @@ import './index.scss'
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-import {usePostUserLoginMutation} from "../../services/usersApi.jsx";
+import {usePostForgotPasswordMutation, usePostUserLoginMutation} from "../../services/usersApi.jsx";
 import expo from "../../assets/logo.png";
 import {Link} from "react-router";
 import {ThreeCircles} from "react-loader-spinner";
@@ -10,7 +10,7 @@ import {useState} from "react";
 
 function ForgotPassword() {
 
-    const [postUserLogin] = usePostUserLoginMutation()
+    const [postForgotPassword] = usePostForgotPasswordMutation()
 
     const SignupSchema = Yup.object().shape({
         email: Yup.string()
@@ -24,26 +24,27 @@ function ForgotPassword() {
         initialValues: {
             email: '',
         },
-        onSubmit: async (values) => {
+        onSubmit: async (values, {resetForm}) => {
             try {
                 setLoading(true);
-                const response = await postUserLogin(values).unwrap();
+                const response = await postForgotPassword(values).unwrap();
                 console.log(response)
 
                 if (response?.statusCode === 200) {
                     await Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "İstifadəçi uğurla giriş etdi",
+                        title: "Elektron poçt ünvanınızı yoxlayın!",
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    resetForm()
                 }
             } catch (error) {
                 await Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: error?.data?.message,
+                    title: "Xəta baş verdi!",
                     showConfirmButton: false,
                     timer: 1500,
                 });
