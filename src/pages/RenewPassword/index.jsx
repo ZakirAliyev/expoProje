@@ -13,7 +13,7 @@ function RenewPassword() {
     const [loading, setLoading] = useState(false);
 
     const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
+    const token = urlParams.get('expoToken');
     const email = urlParams.get('email');
 
     const SignupSchema = Yup.object().shape({

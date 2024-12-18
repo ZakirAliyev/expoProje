@@ -42,7 +42,7 @@ function ProductDetails() {
             <div className="container">
                 <p style={{margin: '8px 8px 4px'}}>Ana səhifə / {product?.categoryName} / {product?.name}</p>
                 <div className="row row1">
-                    <div className="col-4 col-md-4 col-sm-12 col-xs-12 balaca">
+                    <div className="col-5 col-md-4 col-sm-12 col-xs-12 balaca">
                         <div className="box">
                             <div className="img">
                                 {product?.images?.length > 0 ? (
@@ -65,7 +65,7 @@ function ProductDetails() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-8 col-md-8 col-sm-12 col-xs-12 balaca">
+                    <div className="col-7 col-md-8 col-sm-12 col-xs-12 balaca">
                         <div className="box">
                             <FaRegHeart className="icon"/>
                             <p>{product?.categoryName}</p>

@@ -6,7 +6,7 @@ export const usersApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://exposite-001-site1.ntempurl.com/api/',
         prepareHeaders: (headers) => {
-            const token = Cookies.get('token');
+            const token = Cookies.get('expoToken');
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);
             }
@@ -90,9 +90,45 @@ export const usersApi = createApi({
             }),
         }),
         postAddBasketItem: builder.mutation({
-            query: ({ productId, count }) => ({
+            query: ({productId, count}) => ({
                 url: `/Basket/add-basket-item?productId=${productId}&count=${count}`,
                 method: 'POST',
+            }),
+        }),
+        putDecreaseBasketItemCount: builder.mutation({
+            query: ({basketItemId}) => ({
+                url: `/Basket/decrease-basket-item-count?basketItemId=${basketItemId}`,
+                method: 'PUT',
+            }),
+        }),
+        deleteBasketItem: builder.mutation({
+            query: ({basketItemId}) => ({
+                url: `/Basket/delete-basket-item?basketItemId=${basketItemId}`,
+                method: 'DELETE',
+            }),
+        }),
+
+        getWishlistItems: builder.query({
+            query: () => ({
+                url: `/Wishlist`,
+            }),
+        }),
+        postWishlistAdd: builder.mutation({
+            query: ({productId}) => ({
+                url: `/Wishlist/add?productId=${productId}`,
+                method: 'POST',
+            }),
+        }),
+        deleteWishlistRemove: builder.mutation({
+            query: ({productId}) => ({
+                url: `/Wishlist/remove?productId=${productId}`,
+                method: 'DELETE',
+            }),
+        }),
+
+        getUserDetails: builder.query({
+            query: () => ({
+                url: `/UserAccount/get-user-details`,
             }),
         }),
     }),
@@ -114,4 +150,12 @@ export const {
 
     useGetBasketItemsQuery,
     usePostAddBasketItemMutation,
+    usePutDecreaseBasketItemCountMutation,
+    useDeleteBasketItemMutation,
+
+    useGetWishlistItemsQuery,
+    usePostWishlistAddMutation,
+    useDeleteWishlistRemoveMutation,
+
+    useGetUserDetailsQuery,
 } = usersApi

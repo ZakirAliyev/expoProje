@@ -1,6 +1,66 @@
 #basket {
   margin: 50px 0;
 
+  td {
+    height: 80px;
+  }
+
+  @media (max-width: 768px) {
+    tr, td, th, tbody, thead {
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .basket-table {
+      display: block; /* Tabloyu blok düzene dönüştür */
+      width: 100%;
+    }
+
+    .basket-table thead {
+      display: none; /* Başlıkları gizle */
+    }
+
+    .basket-table tbody {
+      display: block; /* Gövdeyi blok düzen yap */
+    }
+
+    .basket-table tr {
+      display: block; /* Her bir satırı blok yap */
+      border-bottom: 1px solid #ccc; /* Alt çizgi */
+      font-size: 22px;
+    }
+
+    .basket-table td {
+      display: flex; /* Hücreleri esnek düzenle */
+      justify-content: space-between; /* İçerikleri yay */
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        display: block; /* Kiçik ekranlar üçün başlıq */
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    }
+
+    .basket-table td img {
+      max-width: 80px; /* Ürünün görselini boyutlandır */
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+
+    }
+
+    .basket-table td input {
+      max-width: 50px; /* Sayı kutusunu boyutlandır */
+    }
+  }
+
+  @media (min-width: 769px) {
+    .basket-table td span {
+      display: none; /* Böyük ekranlarda span başlıqları gizlə */
+    }
+  }
+
   .testiq {
     background-color: #0DA5B5;
     border: 1px solid #0DA5B5;
@@ -21,11 +81,6 @@
 
     th, td {
       text-align: center;
-      padding: 8px;
-    }
-
-    td {
-      height: 100px;
     }
 
     th {
@@ -33,11 +88,17 @@
       font-weight: bold;
     }
 
+    tr {
+      border-bottom: 1px solid #ccc; /* Alt çizgi */
+    }
+
     td img {
-      width: 80px;
+      width:80px;
       height: 80px;
       object-fit: cover;
       border-radius: 5px;
+      aspect-ratio: 1/1;
+
     }
 
     .delete {
@@ -45,9 +106,10 @@
       border: none;
       color: white;
       cursor: pointer;
-      height: 25px;
-      width: 25px;
+      height: 45px;
+      width: 90px;
       border-radius: 5px;
+      font-size: 20px;
 
       &:hover {
         background-color: #e04848;
@@ -55,8 +117,8 @@
     }
 
     input {
-      width: 30px;
-      height: 25px;
+      width: 45px;
+      height: 45px;
       text-align: center;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -66,11 +128,12 @@
       background-color: #00bcd4;
       color: white;
       border: none;
-      width: 25px;
-      height: 25px;
+      width: 45px;
+      height: 45px;
       border-radius: 5px;
       cursor: pointer;
       margin: 0 5px;
+      font-size: 30px;
 
       &:hover {
         background-color: #0097a7;
@@ -143,20 +206,13 @@
   }
 
   @media screen and (max-width: 768px) {
-    //.col-4, .col-8, .col-md-4, .col-md-8, .col-sm-12, .col-xs-12 {
-    //  padding: 0;
-    //}
-
     img {
-      width: 50px !important;
-      height: 50px !important;
+      width: 170px !important;
+      height: 170px !important;
+      aspect-ratio: 1/1;
       object-fit: cover !important;
       margin-right: 16px !important;
       border-radius: 5px !important;
-    }
-
-    td {
-      height: 70px !important;
     }
   }
 }

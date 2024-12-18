@@ -1,5 +1,15 @@
 #productCard {
   width: 100%;
+  background-color: white;
+
+  .red {
+    color: #ff3333;
+
+    &:hover {
+      color: #fb5a5a;
+    }
+  }
+
   .box {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -29,7 +39,7 @@
 
       .icon {
         font-size: 22px;
-        color: #494C50;
+        cursor: pointer;
       }
     }
 
@@ -100,6 +110,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
   }
+
   @media screen and (max-width: 600px) {
 
   }

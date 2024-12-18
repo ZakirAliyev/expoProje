@@ -36,7 +36,7 @@ function LoginForm() {
             try {
                 setLoading(true);
                 const response = await postUserLogin(values).unwrap();
-                Cookies.set('token', response?.data?.token);
+                Cookies.set('expoToken', response?.data?.token);
 
                 if (response?.statusCode === 200) {
                     await Swal.fire({

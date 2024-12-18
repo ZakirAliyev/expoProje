@@ -5,11 +5,30 @@ import {BiUser} from "react-icons/bi";
 import {Link} from "react-router";
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
+import {useGetBasketItemsQuery, useGetUserDetailsQuery, useGetWishlistItemsQuery} from "../../services/usersApi.jsx";
+import {useEffect} from "react";
+import {FaRegHeart} from "react-icons/fa";
+import {GoHeart} from "react-icons/go";
 
 function BottomNavbar() {
 
     const navigate = useNavigate();
-    const token = Cookies.get('token');
+    const token = Cookies.get('expoToken');
+
+    const {data: getBasketItems, refetch} = useGetBasketItemsQuery();
+    const basket = getBasketItems?.data || [];
+    useEffect(() => {
+        refetch();
+    }, [refetch]);
+
+    const {data: productsData, isLoading: productLoading, refetch: wishlistRefetch} = useGetWishlistItemsQuery();
+    const products = productsData?.data?.items
+    useEffect(() => {
+        wishlistRefetch();
+    }, []);
+
+    const {data: getUserDetails} = useGetUserDetailsQuery()
+    const user = getUserDetails?.data
 
     return (
         <section id={"bottomNavbar"}>
@@ -21,9 +40,24 @@ function BottomNavbar() {
                     </div>
                     <input placeholder={"Axtar..."}/>
                     <div className={"actionWrapper"}>
-                        <BsHandbag className={"icon"} onClick={() => {
-                            navigate('/basket')
-                        }}/>
+                        <div style={{
+                            position: 'relative'
+                        }}>
+                            <GoHeart className={"icon"} style={{
+                                marginRight: '10px'
+                            }} onClick={() => {
+                                navigate('/wishlist')
+                            }}/>
+                            <span className={"span"}>{products && products.length}</span>
+                        </div>
+                        <div style={{
+                            position: 'relative'
+                        }}>
+                            <BsHandbag className={"icon"} onClick={() => {
+                                navigate('/basket')
+                            }}/>
+                            <span className={"span"}>{basket && basket.length}</span>
+                        </div>
                         <div className={"line1"}></div>
                         <div className="buttonWrapper">
                             {token === "null" ? (
@@ -40,7 +74,7 @@ function BottomNavbar() {
                                     color: '#0DA5B5',
                                     fontWeight: '500',
                                     cursor: 'pointer',
-                                }}>Elvar!</span></p>
+                                }}>{user?.userName}!</span></p>
                             )}
                         </div>
                         <BiUser className={"icon1 icon"}/>

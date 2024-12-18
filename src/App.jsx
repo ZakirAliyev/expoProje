@@ -8,10 +8,10 @@ function App() {
 
     const routes = createBrowserRouter(ROUTES);
 
-    const token = Cookies.get("token");
+    const token = Cookies.get("expoToken");
 
     if (!token) {
-        Cookies.set("token", "null");
+        Cookies.set("expoToken", "null");
     }
 
     return (

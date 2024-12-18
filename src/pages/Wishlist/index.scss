@@ -4,60 +4,9 @@
 
   h2 {
     text-align: center;
-    padding: 0 0 16px 0;
+    color: #454545;
+    font-weight: 500;
+    margin: 0 0 30px;
   }
 
-  .box {
-    background-color: #F1F1F1;
-    margin-bottom: 16px;
-    padding: 16px;
-
-    .panel {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    img {
-      width: 100%;
-    }
-
-    .title, .price {
-      text-align: center;
-      padding: 10px;
-    }
-
-    .priceWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .price1 {
-        text-decoration: line-through;
-      }
-    }
-
-    .button {
-      width: 100%;
-      display: flex;
-
-      button {
-        margin: 0 auto;
-      }
-    }
-  }
-
-  .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      height: 36px;
-    }
-  }
 }
