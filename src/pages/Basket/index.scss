@@ -1,5 +1,120 @@
 #basket {
-  padding: 16px;
+  margin: 50px 0;
+
+  .testiq {
+    background-color: #0DA5B5;
+    border: 1px solid #0DA5B5;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+  }
+
+  .basket-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: auto;
+
+    th, td {
+      text-align: center;
+      padding: 8px;
+    }
+
+    td {
+      height: 100px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    td img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .delete {
+      background-color: #ff5252;
+      border: none;
+      color: white;
+      cursor: pointer;
+      height: 25px;
+      width: 25px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #e04848;
+      }
+    }
+
+    input {
+      width: 30px;
+      height: 25px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 5px;
+
+      &:hover {
+        background-color: #0097a7;
+      }
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: #A8A8A8;
+    margin: 15px 0 5px;
+  }
+
+  .endirim {
+    background-color: #EBFDE8;
+    font-size: 8px;
+    padding: 4px;
+  }
+
+  .boxx {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    color: #454545;
+  }
+
+  .boxx1 {
+    padding: 8px;
+    background-color: #EBFDE8;
+
+    .boxx2 {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .boxx3 {
+    font-size: 22px;
+  }
 
   .box {
     margin-top: 20px;
@@ -20,75 +135,28 @@
     }
 
     .wrapper {
+      overflow: auto;
       background-color: white;
       padding: 16px;
       border-radius: 15px;
+    }
+  }
 
-      .basket-title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-align: center;
-      }
+  @media screen and (max-width: 768px) {
+    //.col-4, .col-8, .col-md-4, .col-md-8, .col-sm-12, .col-xs-12 {
+    //  padding: 0;
+    //}
 
-      .basket-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 15px;
-        border-bottom: 1px solid #ddd;
+    img {
+      width: 50px !important;
+      height: 50px !important;
+      object-fit: cover !important;
+      margin-right: 16px !important;
+      border-radius: 5px !important;
+    }
 
-        img {
-          width: 50px;
-          height: 50px;
-          margin-right: 15px;
-        }
-
-        .item-name {
-          flex: 1;
-        }
-
-        .quantity {
-          display: flex;
-          align-items: center;
-
-          button {
-            width: 30px;
-            height: 30px;
-            border: none;
-            background-color: #00bcd4;
-            color: white;
-            cursor: pointer;
-            margin: 0 5px;
-
-            &:hover {
-              background-color: #0097a7;
-            }
-          }
-        }
-
-        .price {
-          font-weight: bold;
-          margin-right: 10px;
-        }
-
-        .discount {
-          color: green;
-          font-size: 14px;
-        }
-
-        .delete {
-          background-color: #ff5252;
-          border: none;
-          color: white;
-          cursor: pointer;
-          padding: 5px 10px;
-
-          &:hover {
-            background-color: #e04848;
-          }
-        }
-      }
+    td {
+      height: 70px !important;
     }
   }
 }

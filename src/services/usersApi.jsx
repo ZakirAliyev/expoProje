@@ -1,16 +1,17 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import Cookies from "js-cookie";
 
 export const usersApi = createApi({
     reducerPath: 'usersApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://exposite-001-site1.ntempurl.com/api/',
-        // prepareHeaders: (headers) => {
-        //     const token = Cookies.get('token');
-        //     if (token) {
-        //         headers.set('Authorization', `Bearer ${token}`);
-        //     }
-        //     return headers;
-        // },
+        prepareHeaders: (headers) => {
+            const token = Cookies.get('token');
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+            }
+            return headers;
+        },
     }),
     endpoints: (builder) => ({
         postUserRegister: builder.mutation({
@@ -82,6 +83,18 @@ export const usersApi = createApi({
                 body: data,
             }),
         }),
+
+        getBasketItems: builder.query({
+            query: () => ({
+                url: `/Basket/get-basket-items`,
+            }),
+        }),
+        postAddBasketItem: builder.mutation({
+            query: ({ productId, count }) => ({
+                url: `/Basket/add-basket-item?productId=${productId}&count=${count}`,
+                method: 'POST',
+            }),
+        }),
     }),
 })
 export const {
@@ -97,5 +110,8 @@ export const {
     useGetProductByIdQuery,
 
     usePostForgotPasswordMutation,
-    usePostResetPasswordMutation
+    usePostResetPasswordMutation,
+
+    useGetBasketItemsQuery,
+    usePostAddBasketItemMutation,
 } = usersApi

@@ -7,6 +7,8 @@ import expo from "../../assets/logo.png";
 import {Link} from "react-router";
 import {ThreeCircles} from "react-loader-spinner";
 import {useState} from "react";
+import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
 
@@ -23,6 +25,7 @@ function LoginForm() {
     });
 
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -33,7 +36,7 @@ function LoginForm() {
             try {
                 setLoading(true);
                 const response = await postUserLogin(values).unwrap();
-                console.log(response)
+                Cookies.set('token', response?.data?.token);
 
                 if (response?.statusCode === 200) {
                     await Swal.fire({
@@ -43,6 +46,7 @@ function LoginForm() {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    navigate('/')
                 }
             } catch (error) {
                 await Swal.fire({
