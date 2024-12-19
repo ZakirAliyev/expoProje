@@ -3,8 +3,12 @@ import {useFormik} from 'formik';
 import {BsFillTelephoneFill} from "react-icons/bs";
 import {IoMdMail} from "react-icons/io";
 import {MdLocationOn} from "react-icons/md";
+import {usePostContactSendMutation} from "../../services/usersApi.jsx";
+import Swal from "sweetalert2";
 
 function ContactUs() {
+
+    const [postContactSend] = usePostContactSendMutation()
 
     const formik = useFormik({
         initialValues: {
@@ -13,8 +17,29 @@ function ContactUs() {
             email: '',
             message: '',
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: async (values, {resetForm}) => {
+            try {
+                const response = await postContactSend(values).unwrap()
+
+                if (response?.statusCode === 200) {
+                    await Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Mesaj göndərildi!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    resetForm()
+                }
+            } catch (error) {
+                await Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Xəta baş verdi!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            }
         },
     });
 

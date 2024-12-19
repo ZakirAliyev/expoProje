@@ -1,12 +1,12 @@
 #bottomNavbar {
-  padding: 16px;
   background-color: white;
+
   .icon1 {
     display: none;
   }
 
   .span {
-    background-color: red;
+    background-color: #0DA5B5;
     color: white;
     border-radius: 50%;
     height: 15px;
@@ -21,6 +21,7 @@
   }
 
   .wrapper {
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,6 +29,8 @@
     gap: 20px;
 
     .catalogWrapper {
+    height: 72px;
+      position: relative;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -36,9 +39,58 @@
         font-size: 22px;
       }
 
-      .icon, span {
+      .icon,
+      span {
         font-weight: 500;
         color: rgba(69, 69, 69, 1);
+      }
+
+      .categoryMenu {
+        list-style: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        padding: 10px;
+        display: none;
+        z-index: 999;
+
+        .categoryItem {
+          padding: 8px 12px;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            background-color: #f4f4f4;
+          }
+
+          .subcategoryMenu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            display: none;
+
+            .subcategoryItem {
+              padding: 5px 10px;
+
+              &:hover {
+                background-color: #d0d0d0;
+              }
+            }
+          }
+
+          &:hover .subcategoryMenu {
+            display: block;
+          }
+        }
+      }
+
+      &:hover .categoryMenu {
+        display: block;
       }
     }
 

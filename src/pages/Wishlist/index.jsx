@@ -8,7 +8,14 @@ function Wishlist() {
 
     const {data: productsData, isLoading: productLoading, refetch: wishRefetch} = useGetWishlistItemsQuery();
     const products = productsData?.data?.items
-    
+    //
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         wishRefetch();
+    //     }, 100);
+    //
+    //     return () => clearInterval(interval);
+    // }, []);
 
     return (
         <section id={"wishlist"}>

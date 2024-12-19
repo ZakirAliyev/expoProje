@@ -2,12 +2,12 @@ import './index.scss';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import {useGetAllProductsByCategoryIdQuery} from "../../services/usersApi.jsx";
 import ProductCard from "../ProductCard/index.jsx";
-import {useGetAllProductsQuery} from "../../services/usersApi.jsx";
 
-export default function ProductsSwiper() {
-    const {data: productsData, isLoading: productLoading} = useGetAllProductsQuery();
-    const products = productsData?.data;
+export default function SimilarSwiper({categoryId, productId}) {
+    const {data: productsData, isLoading: productLoading} = useGetAllProductsByCategoryIdQuery(categoryId);
+    const products = productsData?.data?.filter(item => item.id !== productId); // productId ilə eyni olan məhsulu süzürük
 
     return (
         <>
@@ -30,9 +30,9 @@ export default function ProductsSwiper() {
                     },
                 }}
             >
-                {products && products.slice(0, 12).map((item, index) => (
+                {products && products.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <ProductCard item={item}/>
+                        <ProductCard item={item} categoryId={categoryId} />
                     </SwiperSlide>
                 ))}
             </Swiper>

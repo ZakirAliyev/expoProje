@@ -2,6 +2,20 @@
   margin: 0 0 50px 0;
   padding: 16px;
 
+  .ortaSoz {
+    font-weight: 500;
+    color: #454545;
+    text-align: center;
+  }
+
+  .red {
+    color: #0DA5B5;
+
+    &:hover {
+      color: #0a808c;
+    }
+  }
+
   .box1 {
     padding: 16px 8px;
   }
@@ -95,6 +109,7 @@
 
     .addButton {
       margin-top: 20px;
+
       button {
         height: 50px;
         background-color: #0DA5B5;

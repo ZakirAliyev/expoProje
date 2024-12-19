@@ -1,15 +1,16 @@
 import './index.scss';
 import {useFormik} from "formik";
 import * as Yup from 'yup';
-import {usePostUserRegisterMutation} from "../../services/usersApi.jsx";
+import {useGetUserDetailsQuery, usePostUserRegisterMutation} from "../../services/usersApi.jsx";
 import Swal from "sweetalert2";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {ThreeCircles} from "react-loader-spinner";
-import expo from '/src/assets/logo.png'
-import {Link} from "react-router";
 
-function RegisterForm() {
+function ProfileForm() {
     const [postUserRegister] = usePostUserRegisterMutation();
+    const [loading, setLoading] = useState(false);
+    const {data: getUserData} = useGetUserDetailsQuery();
+    const user = getUserData?.data;
 
     const SignupSchema = Yup.object().shape({
         userName: Yup.string()
@@ -41,13 +42,11 @@ function RegisterForm() {
         address: Yup.string()
             .max(200, "Adres maksimum 200 simvol ola bilər")
             .required("Adres tələb olunur"),
-        phoneNumber: Yup.number()
+        phoneNumber: Yup.string()
             .min(9, "Telefon nömrəsi minimum 9 simvol olamalıdır")
             .max(15, "Telefon nömrəsi maksimum 15 simvol ola bilər")
             .required("Telefon nömrəsi tələb olunur"),
     });
-
-    const [loading, setLoading] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -73,7 +72,7 @@ function RegisterForm() {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    resetForm()
+                    resetForm();
                 }
             } catch (error) {
                 await Swal.fire({
@@ -84,30 +83,34 @@ function RegisterForm() {
                     timer: 1500,
                 });
             }
-            setLoading(false)
+            setLoading(false);
         },
         validationSchema: SignupSchema,
     });
 
+    // Kullanıcı detaylarını forma yerleştirmek için useEffect
+    useEffect(() => {
+        if (user) {
+            formik.setValues({
+                userName: user.userName || '',
+                fullName: user.fullName || '',
+                companyName: user.companyName || '',
+                email: user.email || '',
+                password: '', // Şifre boş olaraq saxlanılır
+                confirmPassword: '', // Təkrar şifrə boş saxlanılır
+                address: user.address || '',
+                phoneNumber: user.phoneNumber || '',
+            });
+        }
+    }, [user]);
+
     return (
-        <section id="registerForm">
+        <section id="profileForm">
             <div className="container">
-                <div className={"row row1"}>
-                    <div className={"col-3 col-md-3 col-sm-12 col-xs-12 coll"}>
-                        <img className={"logo"} src={expo} alt={"Image"}/>
-                        <div className={"wrapper"}>
-                            <div className={"textWrapper"}>
-                                <p>Hesabınız</p>
-                                <p>varmı?</p>
-                            </div>
-                            <Link to={`/login`}>
-                                <button className={"butt"}>Daxil ol</button>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className={"col-9 col-md-9 col-sm-12 col-xs-12"}>
+                <div className="row">
+                    <div className="col-12">
                         <form onSubmit={formik.handleSubmit}>
-                            <h2>Qeydiyyat</h2>
+                            <h2>Şəxsi kabinet</h2>
                             <div className="row">
                                 <div className="col-6 col-md-6 col-sm-12 col-xs-12">
                                     <input
@@ -149,49 +152,6 @@ function RegisterForm() {
                                 </div>
                                 <div className="col-6 col-md-6 col-sm-12 col-xs-12">
                                     <input
-                                        placeholder="E-poçt ünvanı"
-                                        type="email"
-                                        name="email"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.email}
-                                    />
-                                    {formik.touched.email && formik.errors.email && (
-                                        <div className="error">{formik.errors.email}</div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
-                                    <input
-                                        placeholder="Şifrə"
-                                        type="password"
-                                        name="password"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.password}
-                                    />
-                                    {formik.touched.password && formik.errors.password && (
-                                        <div className="error">{formik.errors.password}</div>
-                                    )}
-                                </div>
-                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
-                                    <input
-                                        placeholder="Şifrə təkrarı"
-                                        type="password"
-                                        name="confirmPassword"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.confirmPassword}
-                                    />
-                                    {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-                                        <div className="error">{formik.errors.confirmPassword}</div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
-                                    <input
                                         placeholder="Telefon"
                                         name="phoneNumber"
                                         onChange={formik.handleChange}
@@ -202,23 +162,10 @@ function RegisterForm() {
                                         <div className="error">{formik.errors.phoneNumber}</div>
                                     )}
                                 </div>
-                                <div className="col-6 col-md-6 col-sm-12 col-xs-12">
-                                    <input
-                                        placeholder="İstifadəçi adı"
-                                        name="userName"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.userName}
-                                    />
-                                    {formik.touched.userName && formik.errors.userName && (
-                                        <div className="error">{formik.errors.userName}</div>
-                                    )}
-                                </div>
                             </div>
-                            <div className={"button"}>
+                            <div className="button">
                                 <button type="submit">
-                                    {!loading ? 'Təstiq et' :
-                                        <ThreeCircles className={"buttonColor"} color={'#454545'} height={'25'}/>}
+                                    {!loading ? 'Saxla' : <ThreeCircles color={'#454545'} height={'25'}/>}
                                 </button>
                             </div>
                         </form>
@@ -229,4 +176,4 @@ function RegisterForm() {
     );
 }
 
-export default RegisterForm;
+export default ProfileForm;

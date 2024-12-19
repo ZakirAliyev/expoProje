@@ -8,13 +8,16 @@ import Terms from "../pages/Terms/index.jsx";
 import NewProducts from "../pages/NewProducts/index.jsx";
 import Discounts from "../pages/Discounts/index.jsx";
 import ProductDetails from "../pages/ProductDetails/index.jsx";
-import Bestsellers from "../pages/Bestsellers/index.jsx";
 import Basket from "../pages/Basket/index.jsx";
 import Wishlist from "../pages/Wishlist/index.jsx";
 import TestFileUpload from "../pages/TestFileUpload/index.jsx";
 import AdminPanel from "../pages/AdminPanel/index.jsx";
 import ForgotPassword from "../pages/ForgotPassword/index.jsx";
 import RenewPassword from "../pages/RenewPassword/index.jsx";
+import Search from "../pages/Search/index.jsx";
+import AdminForm from "../pages/AdminForm/index.jsx";
+import FilterAndSort from "../pages/FilterAndSort/index.jsx";
+import ProfilePage from "../pages/ProfilePage/index.jsx";
 
 export const ROUTES = [
     {
@@ -32,6 +35,10 @@ export const ROUTES = [
             {
                 path: '/login',
                 element: <LoginPage/>
+            },
+            {
+                path: '/profile',
+                element: <ProfilePage/>
             },
             {
                 path: '/about',
@@ -52,10 +59,6 @@ export const ROUTES = [
             {
                 path: '/discounts',
                 element: <Discounts/>
-            },
-            {
-                path: '/bestsellers',
-                element: <Bestsellers/>
             },
             {
                 path: '/basket',
@@ -80,11 +83,23 @@ export const ROUTES = [
             {
                 path: `/renew-password`,
                 element: <RenewPassword/>
+            },
+            {
+                path: `/search`,
+                element: <Search/>
+            },
+            {
+                path: `/category`,
+                element: <FilterAndSort/>
             }
         ]
     },
     {
         path: '/cp',
+        element: <AdminForm/>,
+    },
+    {
+        path: '/cp/dashboard',
         element: <AdminPanel/>,
     }
 ];

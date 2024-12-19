@@ -68,6 +68,11 @@ export const usersApi = createApi({
                 url: `/Product/get-product-by-id/${id}`,
             }),
         }),
+        getAllProductByName: builder.query({
+            query: (name) => ({
+                url: `/Product/get-all-products-by-name/${name}`,
+            }),
+        }),
 
         postForgotPassword: builder.mutation({
             query: (email) => ({
@@ -110,7 +115,7 @@ export const usersApi = createApi({
 
         getWishlistItems: builder.query({
             query: () => ({
-                url: `/Wishlist`,
+                url: `/Wishlist/get-wishlist`,
             }),
         }),
         postWishlistAdd: builder.mutation({
@@ -131,6 +136,30 @@ export const usersApi = createApi({
                 url: `/UserAccount/get-user-details`,
             }),
         }),
+
+        postAdminLogin: builder.mutation({
+            query: (admin) => ({
+                url: `/UserAccount/admin-login`,
+                method: 'POST',
+                body: admin,
+                headers: {'Content-Type': 'application/json'}
+            }),
+        }),
+
+        postContactSend: builder.mutation({
+            query: (data) => ({
+                url: `/Contact/send`,
+                method: 'POST',
+                body: data,
+                headers: {'Content-Type': 'application/json'}
+            }),
+        }),
+
+        getAllProductsByCategoryId: builder.query({
+            query: (categoryId) => ({
+                url: `/Product/get-all-products-by-categoryId/${categoryId}`,
+            }),
+        }),
     }),
 })
 export const {
@@ -144,6 +173,7 @@ export const {
     usePutCategoryMutation,
 
     useGetProductByIdQuery,
+    useGetAllProductByNameQuery,
 
     usePostForgotPasswordMutation,
     usePostResetPasswordMutation,
@@ -158,4 +188,10 @@ export const {
     useDeleteWishlistRemoveMutation,
 
     useGetUserDetailsQuery,
+
+    usePostAdminLoginMutation,
+
+    usePostContactSendMutation,
+
+    useGetAllProductsByCategoryIdQuery,
 } = usersApi

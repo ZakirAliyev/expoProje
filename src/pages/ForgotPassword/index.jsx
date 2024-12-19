@@ -28,7 +28,6 @@ function ForgotPassword() {
             try {
                 setLoading(true);
                 const response = await postForgotPassword(values).unwrap();
-                console.log(response)
 
                 if (response?.statusCode === 200) {
                     await Swal.fire({

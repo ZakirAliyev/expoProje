@@ -1,13 +1,25 @@
 import './index.scss';
-import {FaChevronLeft, FaChevronRight, FaRegHeart} from "react-icons/fa";
 import ProductCard from "../../components/ProductCard/index.jsx";
 import {useGetAllProductsQuery} from "../../services/usersApi.jsx";
 import AnyLoading from "../../components/AnyLoading/index.jsx";
+import Pagination from "../../components/Pagination/index.jsx";
+import { useState } from "react";
 
 function NewProducts() {
+    const { data: productsData, isLoading: productLoading } = useGetAllProductsQuery();
+    const products = productsData?.data || [];
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const {data: productsData, isLoading: productLoading} = useGetAllProductsQuery();
-    const products = productsData?.data;
+    const itemsPerPage = 12;
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const currentProducts = products.slice(startIndex, endIndex);
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
 
     return (
         <section id={"newProducts"}>
@@ -16,25 +28,20 @@ function NewProducts() {
                 <div className={"lineWrapper"}>
                     <div className={"greenLine"}></div>
                 </div>
-                {productLoading && (
-                    <AnyLoading/>
-                )}
+                {productLoading && <AnyLoading />}
                 <div className={"row"}>
-                    {products && products.map((product) => (
-                        <div className={"col-3 col-md-3 col-sm-6 col-xs-12"} key={product.id}>
-                            <ProductCard item={product}/>
+                    {currentProducts.map((product) => (
+                        <div className={"col-3 col-md-6 col-sm-12 col-xs-12"} key={product.id}>
+                            <ProductCard item={product} />
                         </div>
                     ))}
                 </div>
-                <div className={"pagination"}>
-                    <button><FaChevronLeft/></button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button><FaChevronRight/></button>
-                </div>
+                <Pagination
+                    totalItems={products.length}
+                    itemsPerPage={itemsPerPage}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                />
             </div>
         </section>
     );

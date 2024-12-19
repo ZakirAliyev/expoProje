@@ -1,0 +1,27 @@
+#search {
+  padding: 16px;
+  margin: 50px 0;
+
+  .yazi {
+    background-color: #0DA5B5;
+    color: white;
+    padding: 20px 30px;
+    width: 75%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+  .row {
+    justify-content: center;
+  }
+
+
+  h2 {
+    text-align: center;
+    padding: 0 0 16px 0;
+    color: #454545;
+    font-weight: 500;
+  }
+}
