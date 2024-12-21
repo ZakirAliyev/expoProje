@@ -136,6 +136,14 @@ export const usersApi = createApi({
                 url: `/UserAccount/get-user-details`,
             }),
         }),
+        postUserUpdate: builder.mutation({
+            query: (user) => ({
+                url: `/UserAccount/update-user`,
+                method: 'POST',
+                body: user,
+                headers: {'Content-Type': 'application/json'}
+            }),
+        }),
 
         postAdminLogin: builder.mutation({
             query: (admin) => ({
@@ -188,6 +196,7 @@ export const {
     useDeleteWishlistRemoveMutation,
 
     useGetUserDetailsQuery,
+    usePostUserUpdateMutation,
 
     usePostAdminLoginMutation,
 

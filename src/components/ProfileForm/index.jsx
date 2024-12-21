@@ -1,22 +1,21 @@
 import './index.scss';
 import {useFormik} from "formik";
 import * as Yup from 'yup';
-import {useGetUserDetailsQuery, usePostUserRegisterMutation} from "../../services/usersApi.jsx";
+import {
+    useGetUserDetailsQuery,
+    usePostUserUpdateMutation
+} from "../../services/usersApi.jsx";
 import Swal from "sweetalert2";
 import {useState, useEffect} from "react";
 import {ThreeCircles} from "react-loader-spinner";
 
 function ProfileForm() {
-    const [postUserRegister] = usePostUserRegisterMutation();
+    const [postUserRegister] = usePostUserUpdateMutation();
     const [loading, setLoading] = useState(false);
-    const {data: getUserData} = useGetUserDetailsQuery();
+    const {data: getUserData, refetch: refetchUser} = useGetUserDetailsQuery();
     const user = getUserData?.data;
 
     const SignupSchema = Yup.object().shape({
-        userName: Yup.string()
-            .min(3, "İstifadəçi adı minimum 3 simvoldan ibarət olmalıdır")
-            .max(15, "İstifadəçi adı maksimum 15 simvol ola bilər")
-            .required("İstifadəçi adı tələb olunur"),
         fullName: Yup.string()
             .min(3, "Tam ad minimum 3 simvoldan ibarət olmalıdır")
             .max(50, "Tam ad maksimum 50 simvol ola bilər")
@@ -25,20 +24,6 @@ function ProfileForm() {
             .min(3, "Şirkət adı minimum 3 simvoldan ibarət olmalıdır")
             .max(50, "Şirkət adı maksimum 50 simvol ola bilər")
             .required("Şirkət adı tələb olunur"),
-        email: Yup.string()
-            .email("Düzgün e-poçt daxil edin")
-            .required("E-poçt tələb olunur"),
-        password: Yup.string()
-            .min(8, "Şifrə minimum 8 simvoldan ibarət olmalıdır")
-            .max(20, "Şifrə maksimum 20 simvol ola bilər")
-            .matches(/[A-Z]/, "Şifrə ən az bir böyük hərf ehtiva etməlidir")
-            .matches(/[a-z]/, "Şifrə ən az bir kiçik hərf ehtiva etməlidir")
-            .matches(/\d/, "Şifrə ən az bir rəqəm ehtiva etməlidir")
-            .matches(/[!@#$%^&*(),.?":{}|<>_\-;`~]/, "Şifrə ən az bir xüsusi simvol ehtiva etməlidir")
-            .required("Şifrə tələb olunur"),
-        confirmPassword: Yup.string()
-            .oneOf([Yup.ref('password'), null], "Şifrələr eyni olmalıdır")
-            .required("Şifrə təsdiqi tələb olunur"),
         address: Yup.string()
             .max(200, "Adres maksimum 200 simvol ola bilər")
             .required("Adres tələb olunur"),
@@ -50,12 +35,8 @@ function ProfileForm() {
 
     const formik = useFormik({
         initialValues: {
-            userName: '',
             fullName: '',
             companyName: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
             address: '',
             phoneNumber: '',
         },
@@ -64,16 +45,18 @@ function ProfileForm() {
                 setLoading(true);
                 const response = await postUserRegister(values).unwrap();
 
-                if (response?.statusCode === 201) {
+                if (response?.statusCode === 200) {
                     await Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "User registered successfully! Please check your mail.",
+                        title: "Məlumatlar dəyişdirildi!",
                         showConfirmButton: false,
                         timer: 1500,
                     });
                     resetForm();
                 }
+
+                refetchUser()
             } catch (error) {
                 await Swal.fire({
                     position: "center",
@@ -88,16 +71,11 @@ function ProfileForm() {
         validationSchema: SignupSchema,
     });
 
-    // Kullanıcı detaylarını forma yerleştirmek için useEffect
     useEffect(() => {
         if (user) {
             formik.setValues({
-                userName: user.userName || '',
                 fullName: user.fullName || '',
                 companyName: user.companyName || '',
-                email: user.email || '',
-                password: '', // Şifre boş olaraq saxlanılır
-                confirmPassword: '', // Təkrar şifrə boş saxlanılır
                 address: user.address || '',
                 phoneNumber: user.phoneNumber || '',
             });

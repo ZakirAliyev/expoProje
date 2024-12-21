@@ -16,6 +16,13 @@ import {useEffect, useState} from "react";
 import {GoHeart} from "react-icons/go";
 
 function BottomNavbar() {
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleUserIconClick = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
+
     const [searchTerm, setSearchTerm] = useState("");
     const [activeCategory, setActiveCategory] = useState(null);
 
@@ -56,6 +63,12 @@ function BottomNavbar() {
     const handleMouseLeave = () => {
         setActiveCategory(null);
     };
+
+    const {data: getProfileData, refetch: refetch1} = useGetUserDetailsQuery()
+
+    useEffect(() => {
+        refetch1()
+    }, []);
 
     const renderCategories = (categories) => {
         return (
@@ -101,24 +114,28 @@ function BottomNavbar() {
                                 style={{marginRight: '10px'}}
                                 onClick={() => navigate('/wishlist')}
                             />
-                            <span className={"span"}>{products && products.length}</span>
+                            {token !== "null" && (
+                                <span className={"span"}>{products && products.length}</span>
+                            )}
                         </div>
                         <div style={{position: 'relative'}}>
                             <BsHandbag
                                 className={"icon"}
                                 onClick={() => navigate('/basket')}
                             />
-                            <span className={"span"}>{basket && basket.length}</span>
+                            {token !== "null" && (
+                                <span className={"span"}>{basket && basket.length}</span>
+                            )}
                         </div>
                         <div className={"line1"}></div>
                         <div className="buttonWrapper">
                             {token === "null" ? (
                                 <>
                                     <Link to={`/register`}>
-                                        <button className="button">Register</button>
+                                        <button className="button">Qeydiyyat</button>
                                     </Link>
                                     <Link to={`/login`}>
-                                        <button>Login</button>
+                                        <button>Daxil ol</button>
                                     </Link>
                                 </>
                             ) : (
@@ -133,7 +150,32 @@ function BottomNavbar() {
                                 </p>
                             )}
                         </div>
-                        <BiUser className={"icon1 icon"}/>
+                        <div
+                            className="user-icon-wrapper"
+                            onClick={handleUserIconClick}
+                        >
+                            <BiUser className="icon1 icon"/>
+                            {isMenuOpen && (token === "null" ? (
+                                <div className="hover-menu">
+                                    <button className="hover-button" onClick={() => navigate('/register')}>Qeydiyyat
+                                    </button>
+                                    <button className="hover-button" onClick={() => navigate('/login')}>Daxil ol
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="hover-menu">
+                                    <button className="hover-button1" disabled>{user?.userName}</button>
+                                    <button className="hover-button" onClick={() => navigate('/profile')}>Şəxsi
+                                        kabinet
+                                    </button>
+                                    <button className="hover-button" onClick={() => {
+                                        Cookies.set("expoToken", "null");
+                                        navigate('/');
+                                    }}>Çıxış
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

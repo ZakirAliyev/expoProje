@@ -1,7 +1,7 @@
 import './index.scss';
 import {Link} from "react-router";
 import logo from '/src/assets/logo.png';
-import {HiOutlineBars4} from "react-icons/hi2";
+import BurgerMenu from "../BurgerMenu/index.jsx";
 
 function Navbar() {
     return (
@@ -13,6 +13,7 @@ function Navbar() {
                             <img src={logo} alt={"Image"}/>
                         </Link>
                     </div>
+                    <BurgerMenu/>
                     <div className={"links"}>
                         <Link className={"link"} to={`/about`}>Haqqımızda</Link>
                         <Link className={"link"} to={`/new-products`}>Yeni məhsullar</Link>
@@ -20,7 +21,6 @@ function Navbar() {
                         <Link className={"link"} to={`/terms`}>Qaydalar</Link>
                         <Link className={"link"} to={`/contact`}>Əlaqə</Link>
                     </div>
-                    <HiOutlineBars4 className={"icon"} />
                 </div>
             </div>
         </section>

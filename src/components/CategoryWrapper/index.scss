@@ -9,23 +9,30 @@
   }
 
   .box {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 32px;
     height: 200px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
-    background: linear-gradient(304deg, rgba(153,245,255,1) 0%, rgba(255,255,255,1) 100%);
+    color: #454545;
+    background-image: url(/src/assets/categoryBg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #0DA5B5;
 
     span {
       font-size: 20px;
       font-weight: 700;
+      background-color: #0DA5B5;
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: white;
     }
 
     &:hover {
-      background-color: #0DA5B5;
+      background-color: #c4f1f6;
       cursor: pointer;
       font-size: 25px;
 
