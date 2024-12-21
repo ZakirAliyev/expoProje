@@ -9,6 +9,10 @@
     transition: all .2s ease;
 }
 
+:where(.css-1kf000u).ant-drawer .ant-drawer-close {
+    color: white;
+}
+
 body {
     background-color: #fafafa;
 }
