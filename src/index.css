@@ -6,8 +6,29 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
+}
+
+button, a, .link, .icon, img {
     transition: all .2s ease;
 }
+
+/* Scroll bar genel stilleri */
+::-webkit-scrollbar {
+    width: 7px; /* Scroll bar genişliği */
+}
+
+/* Scroll barın arka planı */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Arka plan rengi */
+    border-radius: 5px; /* Yuvarlak köşeler */
+}
+
+/* Scroll barın kaydırıcı kısmı */
+::-webkit-scrollbar-thumb {
+    background: #0DA5B5; /* Kaydırıcı rengi */
+    border-radius: 5px; /* Yuvarlak köşeler */
+}
+
 
 :where(.css-1kf000u).ant-drawer .ant-drawer-close {
     color: white;

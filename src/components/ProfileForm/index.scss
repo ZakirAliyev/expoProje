@@ -1,6 +1,13 @@
 #profileForm {
   margin: 50px 0;
 
+  .btntbn {
+    &:hover {
+      background-color: white !important;
+      color: #0DA5B5 !important;
+    }
+  }
+
   .coll {
     display: flex;
     align-items: center;

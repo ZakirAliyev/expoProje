@@ -8,6 +8,8 @@ import {
 import Swal from "sweetalert2";
 import {useState, useEffect} from "react";
 import {ThreeCircles} from "react-loader-spinner";
+import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 
 function ProfileForm() {
     const [postUserRegister] = usePostUserUpdateMutation();
@@ -82,13 +84,40 @@ function ProfileForm() {
         }
     }, [user]);
 
+    const navigate = useNavigate()
+
     return (
         <section id="profileForm">
             <div className="container">
                 <div className="row">
                     <div className="col-12">
                         <form onSubmit={formik.handleSubmit}>
-                            <h2>Şəxsi kabinet</h2>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                padding: '0 16px'
+                            }}>
+                                <h2>Şəxsi kabinet</h2>
+                                <div className={"btntbn"} style={{
+                                    backgroundColor: '#0DA5B5',
+                                    color: 'white',
+                                    border: '1px solid white',
+                                    height: '40px',
+                                    padding: '0 16px',
+                                    fontSize: '20px',
+                                    borderRadius: '10px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    transition: 'all .2s ease'
+                                }} onClick={() => {
+                                    Cookies.set("expoToken", "null");
+                                    navigate('/');
+                                }}>
+                                    Çıxış
+                                </div>
+                            </div>
                             <div className="row">
                                 <div className="col-6 col-md-6 col-sm-12 col-xs-12">
                                     <input

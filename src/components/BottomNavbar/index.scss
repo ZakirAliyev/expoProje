@@ -1,5 +1,10 @@
 #bottomNavbar {
   background-color: white;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
   .icon1 {
     display: none;
@@ -105,33 +110,52 @@
         left: 0;
         background-color: #fff;
         border: 1px solid #e0e0e0;
-        padding: 10px;
         display: none;
         z-index: 999;
 
         .categoryItem {
-          padding: 8px 12px;
+          padding: 16px;
           cursor: pointer;
-          position: relative;
-
+          width: 400px;
           &:hover {
             background-color: #f4f4f4;
           }
 
           .subcategoryMenu {
+            height: 100%;
             position: absolute;
             top: 0;
             left: 100%;
             background-color: white;
             border: 1px solid #e0e0e0;
-            padding: 10px;
             display: none;
 
             .subcategoryItem {
-              padding: 5px 10px;
+              padding: 16px;
+              width: 200px;
 
               &:hover {
-                background-color: #d0d0d0;
+                background-color: #f4f4f4;
+              }
+            }
+
+            .subcategoryItem1 {
+              padding: 16px;
+              width: 200px;
+              margin-left: 200px;
+
+              &:hover {
+                background-color: #f4f4f4;
+              }
+            }
+
+            .subcategoryItem2 {
+              padding: 16px;
+              width: 200px;
+              margin-left: 400px;
+
+              &:hover {
+                background-color: #f4f4f4;
               }
             }
           }

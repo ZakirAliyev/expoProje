@@ -17,8 +17,30 @@ import {GoHeart} from "react-icons/go";
 
 function BottomNavbar() {
 
+    const [topOffset, setTopOffset] = useState(72);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setTopOffset(Math.max(0, 72 - scrollY));
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const handleCategoryClick = (categoryName, categoryId) => {
+        navigate(`/category?categoryName=${categoryName}&&categoryId=${categoryId}`);
+    };
+
+    const handleSubCategoryClick = (subCategoryName, subCategoryId) => {
+        navigate(`/category?categoryName=${subCategoryName}&&categoryId=${subCategoryId}`);
+    };
     const handleUserIconClick = () => {
         setIsMenuOpen((prev) => !prev);
     };
@@ -74,26 +96,71 @@ function BottomNavbar() {
         return (
             <ul className="categoryMenu">
                 {categories.map((category) => (
-                    <li
-                        key={category.id}
-                        onMouseEnter={() => setActiveCategory(category.id)}
-                        onMouseLeave={handleMouseLeave}
-                        className="categoryItem"
-                    >
-                        {category.name}
-                        {activeCategory === category.id && category.subCategories?.length > 0 && (
-                            <div className="subcategoryMenu">
-                                {renderCategories(category.subCategories)}
-                            </div>
-                        )}
-                    </li>
-                ))}
+                        <li
+                            key={category.id}
+                            onMouseEnter={() => setActiveCategory(category.id)}
+                            onMouseLeave={handleMouseLeave}
+                            className={`categoryItem ${activeCategory === category.id ? 'active' : ''}`}
+                            onClick={() => handleCategoryClick(category.name, category.id)}
+                        >
+                            {category.name}
+                            {activeCategory === category.id && category.subCategories?.length > 0 && (
+                                <>
+                                    <div
+                                        className="subcategoryMenu"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        {category.subCategories.slice(20, 30).map((subCategory) => (
+                                            <div
+                                                key={subCategory.id}
+                                                className="subcategoryItem2"
+                                                onClick={() => handleSubCategoryClick(subCategory.name, subCategory.id)}
+                                            >
+                                                {subCategory.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div
+                                        className="subcategoryMenu"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        {category.subCategories.slice(10, 20).map((subCategory) => (
+                                            <div
+                                                key={subCategory.id}
+                                                className="subcategoryItem1"
+                                                onClick={() => handleSubCategoryClick(subCategory.name, subCategory.id)}
+                                            >
+                                                {subCategory.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div
+                                        className="subcategoryMenu"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        {category.subCategories.slice(0, 10).map((subCategory) => (
+                                            <div
+                                                key={subCategory.id}
+                                                className="subcategoryItem"
+                                                onClick={() => handleSubCategoryClick(subCategory.name, subCategory.id)}
+                                            >
+                                                {subCategory.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+                        </li>
+                    )
+                )}
             </ul>
         );
     };
 
     return (
-        <section id={"bottomNavbar"}>
+        <section style={{
+            top: `${topOffset}px`,
+        }} id={"bottomNavbar"}>
             <div className={"container"}>
                 <div className={"wrapper"}>
                     <div className={"catalogWrapper"}>

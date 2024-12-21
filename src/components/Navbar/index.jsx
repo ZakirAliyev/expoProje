@@ -15,6 +15,7 @@ function Navbar() {
                     </div>
                     <BurgerMenu/>
                     <div className={"links"}>
+                        <Link className={"link"} to={`/`}>Ana Səhifə</Link>
                         <Link className={"link"} to={`/about`}>Haqqımızda</Link>
                         <Link className={"link"} to={`/new-products`}>Yeni məhsullar</Link>
                         <Link className={"link"} to={`/discounts`}>Endirimlər</Link>

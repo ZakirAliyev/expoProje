@@ -36,7 +36,7 @@ function ProductCard({item, query, categoryId}) {
     const {
         data: productsDataa,
         isLoading: productLoadinga,
-        refetch: myrefetch
+        refetch: myrefetch1
     } = useGetAllProductsByCategoryIdQuery(categoryId);
 
     async function addHeart(productId) {
@@ -44,7 +44,7 @@ function ProductCard({item, query, categoryId}) {
         newProdRef()
         wishRefetch()
         myRefetch()
-        myrefetch()
+        myrefetch1()
     }
 
     async function removeHeart(productId) {
@@ -52,7 +52,7 @@ function ProductCard({item, query, categoryId}) {
         newProdRef()
         wishRefetch()
         myRefetch()
-        myrefetch()
+        myrefetch1()
     }
 
 

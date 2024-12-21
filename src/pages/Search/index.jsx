@@ -9,8 +9,7 @@ import { useState } from "react";
 function Search() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const query = searchParams.get("query") || "";
-
+    const query = searchParams.get("query");
     const { data: getAllProductByName, isLoading } = useGetAllProductByNameQuery(query);
     const products = getAllProductByName?.data || [];
     const [currentPage, setCurrentPage] = useState(1);

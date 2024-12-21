@@ -7,7 +7,7 @@ import {LeftOutlined, RightOutlined} from "@ant-design/icons"; // Chevron ikonla
 import {
     useDeleteWishlistRemoveMutation,
     useGetBasketItemsQuery,
-    useGetProductByIdQuery,
+    useGetProductByIdQuery, useGetWishlistItemsQuery,
     usePostAddBasketItemMutation,
     usePostWishlistAddMutation
 } from "../../services/usersApi.jsx";
@@ -23,6 +23,7 @@ function ProductDetails() {
 
     const {data: productData, isLoading, isError, refetch: refetchProduct} = useGetProductByIdQuery(id);
     const {data: basketData, refetch: refetchBasket} = useGetBasketItemsQuery();
+    const {data: zakir, refetch: zakir1} = useGetWishlistItemsQuery()
 
     const [postAddBasketItem] = usePostAddBasketItemMutation();
     const [postWishlistAdd] = usePostWishlistAddMutation();
@@ -64,6 +65,25 @@ function ProductDetails() {
                 </div>
             </section>
         );
+    }
+
+    async function addHeart(productId) {
+        const response = await postWishlistAdd({productId})
+        zakir1()
+        refetchProduct()
+    }
+
+    async function removeHeart(productId) {
+        const response = await deleteWishlistRemove({productId})
+        zakir1()
+        refetchProduct()
+    }
+
+    async function addToCart(productId, count) {
+        const response = await postAddBasketItem({productId, count}).unwrap()
+        zakir1()
+        refetchProduct()
+        refetchBasket()
     }
 
     return (

@@ -1,6 +1,14 @@
 #loginForm {
   margin: 50px 0;
 
+  .link {
+    padding: 0 16px;
+    width: 100%;
+    text-align: end;
+    color: white;
+    text-decoration: underline;
+  }
+
   .coll {
     display: flex;
     align-items: center;

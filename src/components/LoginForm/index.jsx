@@ -2,7 +2,7 @@ import './index.scss'
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-import {usePostUserLoginMutation} from "../../services/usersApi.jsx";
+import {useGetUserDetailsQuery, usePostUserLoginMutation} from "../../services/usersApi.jsx";
 import expo from "../../assets/logo.png";
 import {Link} from "react-router";
 import {ThreeCircles} from "react-loader-spinner";
@@ -13,6 +13,8 @@ import {useNavigate} from "react-router-dom";
 function LoginForm() {
 
     const [postUserLogin] = usePostUserLoginMutation()
+    const {data: userDetails, refetch: userDetailsRefetch} = useGetUserDetailsQuery()
+    const user = userDetails?.data
 
     const SignupSchema = Yup.object().shape({
         email: Yup.string()
@@ -47,6 +49,7 @@ function LoginForm() {
                         timer: 1500,
                     });
                     navigate('/')
+                    userDetailsRefetch()
                 }
             } catch (error) {
                 await Swal.fire({
@@ -104,6 +107,7 @@ function LoginForm() {
                                         value={formik.values.password}
                                     />
                                 </div>
+                                <Link className={"link"} to={`/forgot-password`}>Şifrəni unutmusan?</Link>
                             </div>
                             <div className={"button"}>
                                 <button type="submit">

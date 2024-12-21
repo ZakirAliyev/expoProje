@@ -3,19 +3,23 @@ import * as React from 'react';
 import {Button, Drawer} from "antd";
 import {FaBars, FaFacebook, FaInstagram, FaTelegram, FaTwitter, FaYoutube} from "react-icons/fa";
 import logo from '/src/assets/logo1.png'
-import {Link} from "react-router";
+import {Link, useLocation} from "react-router";
 import {useGetAllCategoriesTreeQuery} from "../../services/usersApi.jsx";
-
 
 export default function BurgerMenu() {
     const [open, setOpen] = React.useState(false);
+    const location = useLocation(); // useLocation hook'u ekleniyor
+
+    React.useEffect(() => {
+        setOpen(false); // URL değiştiğinde Drawer'ı kapat
+    }, [location]);
 
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
 
-    const {data: categoryData} = useGetAllCategoriesTreeQuery()
-    const categories = categoryData?.data
+    const {data: categoryData} = useGetAllCategoriesTreeQuery();
+    const categories = categoryData?.data;
 
     const DrawerList = (
         <section id={"burgerMenu"}>
@@ -26,6 +30,7 @@ export default function BurgerMenu() {
                 <div className={"greenLine"}></div>
             </div>
             <div className={"links"}>
+                <Link to={`/`} className={"link"}>Ana Səhifə</Link>
                 <Link to={`/about`} className={"link"}>Haqqımızda</Link>
                 <Link to={`/new-products`} className={"link"}>Yeni məhsullar</Link>
                 <Link to={`/discounts`} className={"link"}>Endirimlər</Link>
@@ -42,14 +47,6 @@ export default function BurgerMenu() {
                 <Link to={`/`} className={"icon"}><FaTelegram/></Link>
                 <Link to={`/`} className={"icon"}><FaYoutube/></Link>
             </div>
-            {/*<div className={"links"}>*/}
-            {/*    {categories && categories.slice(0, 6).map((category) => (*/}
-            {/*        <Link to={`/`} className={"link"}>*/}
-            {/*            {category?.name.charAt(0).toUpperCase() + category?.name.slice(1).toLowerCase()}*/}
-            {/*        </Link>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-            {/*yazikar ag */}
         </section>
     );
 
