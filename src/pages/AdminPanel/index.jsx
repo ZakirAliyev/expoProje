@@ -8,6 +8,7 @@ import {Button, Layout, Menu, theme} from 'antd';
 import logo from '/src/assets/logo1.png';
 import {TbCategory} from "react-icons/tb";
 import CategoriesPanel from "../../components/CategoriesPanel/index.jsx";
+import UsersPanel from "../../components/UsersPanel/index.jsx";
 
 const {Header, Sider, Content} = Layout;
 
@@ -22,7 +23,7 @@ const AdminPanel = () => {
     const renderContent = () => {
         switch (selectedKey) {
             case '1':
-                return <></>;
+                return <UsersPanel/>;
             case '2':
                 return <CategoriesPanel/>;
             default:
@@ -42,6 +43,11 @@ const AdminPanel = () => {
                         defaultSelectedKeys={['1']}
                         onClick={({key}) => setSelectedKey(key)}
                         items={[
+                            {
+                                key: '1',
+                                icon: <TbCategory/>,
+                                label: 'İstifadəçilər',
+                            },
                             {
                                 key: '2',
                                 icon: <TbCategory/>,

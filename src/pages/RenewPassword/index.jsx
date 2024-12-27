@@ -7,13 +7,14 @@ import { usePostResetPasswordMutation } from "../../services/usersApi.jsx";
 import expo from "../../assets/logo.png";
 import { Link } from "react-router";
 import { ThreeCircles } from "react-loader-spinner";
+import {useParams} from "react-router-dom";
 
 function RenewPassword() {
     const [postResetPassword] = usePostResetPasswordMutation();
     const [loading, setLoading] = useState(false);
 
     const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('expoToken');
+    const token = urlParams.get('token');
     const email = urlParams.get('email');
 
     const SignupSchema = Yup.object().shape({

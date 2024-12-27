@@ -168,6 +168,12 @@ export const usersApi = createApi({
                 url: `/Product/get-all-products-by-categoryId/${categoryId}`,
             }),
         }),
+
+        getAllUsers: builder.query({
+            query: () => ({
+                url: `/AdminUser/get-all-users`,
+            })
+        })
     }),
 })
 export const {
@@ -203,4 +209,6 @@ export const {
     usePostContactSendMutation,
 
     useGetAllProductsByCategoryIdQuery,
+
+    useGetAllUsersQuery
 } = usersApi
