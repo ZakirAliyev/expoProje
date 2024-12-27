@@ -173,7 +173,14 @@ export const usersApi = createApi({
             query: () => ({
                 url: `/AdminUser/get-all-users`,
             })
-        })
+        }),
+
+        deleteCategory: builder.mutation({
+            query: (id) => ({
+                url: `/Categories/delete-category/${id}`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 })
 export const {
@@ -210,5 +217,7 @@ export const {
 
     useGetAllProductsByCategoryIdQuery,
 
-    useGetAllUsersQuery
+    useGetAllUsersQuery,
+
+    useDeleteCategoryMutation
 } = usersApi

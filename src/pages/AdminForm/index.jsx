@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import {useState} from "react";
 import {ThreeCircles} from "react-loader-spinner";
 import {useNavigate} from "react-router-dom";
+import Cookies from "js-cookie";
 
 function AdminForm() {
 
@@ -34,6 +35,7 @@ function AdminForm() {
                     });
                     resetForm()
                     navigate('/cp/dashboard')
+                    Cookies.set("expoToken", response?.data?.token)
                 }
             } catch (error) {
                 await Swal.fire({

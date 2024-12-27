@@ -9,6 +9,9 @@ import logo from '/src/assets/logo1.png';
 import {TbCategory} from "react-icons/tb";
 import CategoriesPanel from "../../components/CategoriesPanel/index.jsx";
 import UsersPanel from "../../components/UsersPanel/index.jsx";
+import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
+import ProductPanel from "../../components/ProductPanel/index.jsx";
 
 const {Header, Sider, Content} = Layout;
 
@@ -26,34 +29,47 @@ const AdminPanel = () => {
                 return <UsersPanel/>;
             case '2':
                 return <CategoriesPanel/>;
+            case '3':
+                return <ProductPanel/>;
             default:
                 return <></>;
         }
     };
 
+    const navigate = useNavigate();
+
     return (
         <section id={"adminPanel"}>
             <Layout className={"layout"}>
-                <Sider trigger={null} collapsible collapsed={collapsed}>
+                <Sider style={{
+                    backgroundColor: '#333'
+                }} trigger={null} collapsible collapsed={collapsed}>
                     <div className="demo-logo-vertical"/>
                     <img src={logo} alt={"Logo"} className={"logo"}/>
-                    <Menu
-                        theme="dark"
-                        mode="inline"
-                        defaultSelectedKeys={['1']}
-                        onClick={({key}) => setSelectedKey(key)}
-                        items={[
-                            {
-                                key: '1',
-                                icon: <TbCategory/>,
-                                label: 'İstifadəçilər',
-                            },
-                            {
-                                key: '2',
-                                icon: <TbCategory/>,
-                                label: 'Kateqoriyalar',
-                            },
-                        ]}
+                    <Menu style={{
+                        backgroundColor: '#333',
+                    }}
+                          theme="dark"
+                          mode="inline"
+                          defaultSelectedKeys={['1']}
+                          onClick={({key}) => setSelectedKey(key)}
+                          items={[
+                              {
+                                  key: '1',
+                                  icon: <TbCategory/>,
+                                  label: 'İstifadəçilər',
+                              },
+                              {
+                                  key: '2',
+                                  icon: <TbCategory/>,
+                                  label: 'Kateqoriyalar',
+                              },
+                              {
+                                  key: '3',
+                                  icon: <TbCategory/>,
+                                  label: 'Məhsullar',
+                              },
+                          ]}
                     />
                 </Sider>
                 <Layout>
@@ -73,6 +89,27 @@ const AdminPanel = () => {
                                 height: 64,
                             }}
                         />
+                        <div style={{
+                            width: '100%',
+                            textAlign: 'right',
+                            marginTop: '-63px',
+                            marginLeft: '-40px',
+                            color: '#454545',
+                            fontWeight: '700',
+                            fontSize: '18px',
+                        }}>Admin Panel <button style={{
+                            backgroundColor: '#0DA5B5',
+                            border: '1px solid #0DA5B5',
+                            height: '40px',
+                            padding: '0 24px',
+                            color: 'white',
+                            borderRadius: '10px',
+                            fontSize: '18px',
+                            marginLeft: '20px',
+                        }} onClick={() => {
+                            Cookies.set("expoToken", "null");
+                            navigate('/');
+                        }}>Çıxış</button></div>
                     </Header>
                     <Content
                         style={{

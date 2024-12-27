@@ -22,8 +22,7 @@ function RegisterForm() {
             .required("Tam ad tələb olunur"),
         companyName: Yup.string()
             .min(3, "Şirkət adı minimum 3 simvoldan ibarət olmalıdır")
-            .max(50, "Şirkət adı maksimum 50 simvol ola bilər")
-            .required("Şirkət adı tələb olunur"),
+            .max(50, "Şirkət adı maksimum 50 simvol ola bilər"),
         email: Yup.string()
             .email("Düzgün e-poçt daxil edin")
             .required("E-poçt tələb olunur"),

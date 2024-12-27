@@ -25,7 +25,7 @@ function CategoryWrapper() {
                             key={category.id || index}
                         >
                             <div className="box" onClick={() => {
-                                navigate(`/category?categoryName=${category.name}`);
+                                navigate(`/category?categoryName=${category.name}&&categoryId=${category.id}`);
                             }}>
                                 <span>{category.name}</span>
                             </div>
