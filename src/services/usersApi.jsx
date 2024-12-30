@@ -197,6 +197,66 @@ export const usersApi = createApi({
                 body: data,
             })
         }),
+
+        getAllBanners: builder.query({
+            query: () => ({
+                url: `/Banner/get-all-banners`,
+            })
+        }),
+        postCreateBanner: builder.mutation({
+            query: (data) => ({
+                url: `/Banner/create-banner`,
+                method: 'POST',
+                body: data,
+            })
+        }),
+        deleteBanner: builder.mutation({
+            query: (id) => ({
+                url: `/Banner/delete-banner/${id}`,
+                method: 'DELETE',
+                body: id,
+            })
+        }),
+
+        getAllBrands: builder.query({
+            query: () => ({
+                url: `/Brand/get-all-brands`,
+            })
+        }),
+        postCreateBrand: builder.mutation({
+            query: (data) => ({
+                url: `/Brand/create-brand`,
+                method: 'POST',
+                body: data,
+            })
+        }),
+        deleteBrand: builder.mutation({
+            query: (id) => ({
+                url: `/Brand/delete-brand/${id}`,
+                method: 'DELETE',
+                body: id,
+            })
+        }),
+
+        getAllRBanners: builder.query({
+            query: () => ({
+                url: `/RightBanner/get-all-rightbanners`,
+            })
+        }),
+        postCreateRBanner: builder.mutation({
+            query: (data) => ({
+                url: `/RightBanner/create-rightbanner`,
+                method: 'POST',
+                body: data,
+            })
+        }),
+        deleteRBanner: builder.mutation({
+            query: (id) => ({
+                url: `/RightBanner/delete-rightbanner/${id}`,
+                method: 'DELETE',
+                body: id,
+            })
+        }),
     }),
 })
 export const {
@@ -238,5 +298,17 @@ export const {
     useDeleteCategoryMutation,
 
     usePostCreateProductMutation,
-    usePostUpdateProductMutation
+    usePostUpdateProductMutation,
+
+    useGetAllBannersQuery,
+    usePostCreateBannerMutation,
+    useDeleteBannerMutation,
+
+    useGetAllBrandsQuery,
+    usePostCreateBrandMutation,
+    useDeleteBrandMutation,
+
+    useGetAllRBannersQuery,
+    usePostCreateRBannerMutation,
+    useDeleteRBannerMutation,
 } = usersApi

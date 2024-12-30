@@ -4,9 +4,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import {Autoplay, Pagination} from 'swiper/modules';
 import logo from '/src/assets/logo.png';
+import {useGetAllBrandsQuery} from "../../services/usersApi.jsx";
+import {baseURLBrand} from "../../constants.js";
 
 export default function BrandsSwiper() {
-    const slides = Array(16).fill(null);
+
+    const {data: brandsData} = useGetAllBrandsQuery()
+    const brands = brandsData?.data
 
     return (
         <div
@@ -43,9 +47,9 @@ export default function BrandsSwiper() {
                     },
                 }}
             >
-                {slides.map((_, index) => (
-                    <SwiperSlide key={index}>
-                        <img src={logo} alt={`Logo ${index + 1}`}/>
+                {brands && brands.map((brand) => (
+                    <SwiperSlide key={brand?.id}>
+                        <img src={baseURLBrand + brand?.imageName} alt={"Brand"}/>
                     </SwiperSlide>
                 ))}
             </Swiper>

@@ -13,8 +13,10 @@ import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import ProductPanel from "../../components/ProductPanel/index.jsx";
 import {FaUsers} from "react-icons/fa";
-import {FaAppleWhole} from "react-icons/fa6";
 import {MdConstruction} from "react-icons/md";
+import BannerPanel from "../../components/BannerPanel/index.jsx";
+import BrandPanel from "../../components/BrandPanel/index.jsx";
+import RightBannerPanel from "../../components/RightBannerPanel/index.jsx";
 
 const {Header, Sider, Content} = Layout;
 
@@ -34,6 +36,12 @@ const AdminPanel = () => {
                 return <CategoriesPanel/>;
             case '3':
                 return <ProductPanel/>;
+            case '4':
+                return <BannerPanel/>;
+            case '5':
+                return <BrandPanel/>;
+            case '6':
+                return <RightBannerPanel/>;
             default:
                 return <></>;
         }
@@ -69,8 +77,23 @@ const AdminPanel = () => {
                               },
                               {
                                   key: '3',
-                                  icon: <MdConstruction />,
+                                  icon: <MdConstruction/>,
                                   label: 'Məhsullar',
+                              },
+                              {
+                                  key: '4',
+                                  icon: <MdConstruction/>,
+                                  label: 'Banner-lər',
+                              },
+                              {
+                                  key: '5',
+                                  icon: <MdConstruction/>,
+                                  label: 'Brand-lar',
+                              },
+                              {
+                                  key: '6',
+                                  icon: <MdConstruction/>,
+                                  label: 'Sağ Banner-lər',
                               },
                           ]}
                     />

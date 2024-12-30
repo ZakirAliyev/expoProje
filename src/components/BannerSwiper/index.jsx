@@ -2,10 +2,15 @@ import './index.scss';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import banner1 from '/src/assets/banner1.jpeg'
 import {Autoplay, Navigation} from 'swiper/modules';
+import {useGetAllBannersQuery} from "../../services/usersApi.jsx";
+import {baseURLBanner} from "../../constants.js";
 
 export default function BannerSwiper() {
+
+    const {data: bannersData} = useGetAllBannersQuery()
+    const banners = bannersData?.data
+
     return (
         <section id={"bannerSwiper"}>
             <Swiper
@@ -20,21 +25,13 @@ export default function BannerSwiper() {
                 modules={[Autoplay, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide>
-                    <img
-                        src={banner1}
-                        alt={"Image"} className={"col9img"}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={banner1}
-                        alt={"Image"} className={"col9img"}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        src={banner1}
-                        alt={"Image"} className={"col9img"}/>
-                </SwiperSlide>
+                {banners && banners.map((banner, index) => (
+                    <SwiperSlide>
+                        <img
+                            src={baseURLBanner + banner?.imageName}
+                            alt={"Image"} className={"col9img"}/>
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </section>
     );
