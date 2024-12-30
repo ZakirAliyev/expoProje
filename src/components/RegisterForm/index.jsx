@@ -40,8 +40,9 @@ function RegisterForm() {
         address: Yup.string()
             .max(200, "Adres maksimum 200 simvol ola bilər")
             .required("Adres tələb olunur"),
-        phoneNumber: Yup.number()
-            .min(9, "Telefon nömrəsi minimum 9 simvol olamalıdır")
+        phoneNumber: Yup.string()
+            .matches(/^[0-9]+$/, "Telefon nömrəsi yalnız rəqəmlərdən ibarət olmalıdır")
+            .min(9, "Telefon nömrəsi minimum 9 simvol olmalıdır")
             .max(15, "Telefon nömrəsi maksimum 15 simvol ola bilər")
             .required("Telefon nömrəsi tələb olunur"),
     });
@@ -68,7 +69,7 @@ function RegisterForm() {
                     await Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "User registered successfully! Please check your mail.",
+                        title: "Qeydiyyat uğurludur. Zəhmət olmasa maili yoxlayın",
                         showConfirmButton: false,
                         timer: 1500,
                     });

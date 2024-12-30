@@ -181,6 +181,22 @@ export const usersApi = createApi({
                 method: 'DELETE',
             }),
         }),
+
+        postCreateProduct: builder.mutation({
+            query: (data) => ({
+                url: `/Product/create-product`,
+                method: 'POST',
+                body: data,
+            })
+        }),
+
+        postUpdateProduct: builder.mutation({
+            query: (data) => ({
+                url: `/Product/update-product`,
+                method: 'PUT',
+                body: data,
+            })
+        }),
     }),
 })
 export const {
@@ -219,5 +235,8 @@ export const {
 
     useGetAllUsersQuery,
 
-    useDeleteCategoryMutation
+    useDeleteCategoryMutation,
+
+    usePostCreateProductMutation,
+    usePostUpdateProductMutation
 } = usersApi

@@ -12,6 +12,9 @@ import UsersPanel from "../../components/UsersPanel/index.jsx";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import ProductPanel from "../../components/ProductPanel/index.jsx";
+import {FaUsers} from "react-icons/fa";
+import {FaAppleWhole} from "react-icons/fa6";
+import {MdConstruction} from "react-icons/md";
 
 const {Header, Sider, Content} = Layout;
 
@@ -56,7 +59,7 @@ const AdminPanel = () => {
                           items={[
                               {
                                   key: '1',
-                                  icon: <TbCategory/>,
+                                  icon: <FaUsers/>,
                                   label: 'İstifadəçilər',
                               },
                               {
@@ -66,7 +69,7 @@ const AdminPanel = () => {
                               },
                               {
                                   key: '3',
-                                  icon: <TbCategory/>,
+                                  icon: <MdConstruction />,
                                   label: 'Məhsullar',
                               },
                           ]}
@@ -113,6 +116,7 @@ const AdminPanel = () => {
                     </Header>
                     <Content
                         style={{
+                            overflow: 'auto',
                             margin: '24px 16px',
                             padding: 24,
                             minHeight: 280,

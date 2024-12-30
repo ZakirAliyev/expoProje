@@ -8,6 +8,7 @@ function TestFileUpload() {
 
     const handleFileChange = (event) => {
         setSelectedFiles(event.target.files);
+        console.log(selectedFiles);
     };
 
     const handleUpload = async () => {
