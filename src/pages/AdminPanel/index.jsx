@@ -6,7 +6,7 @@ import {
 } from '@ant-design/icons';
 import {Button, Layout, Menu, theme} from 'antd';
 import logo from '/src/assets/logo1.png';
-import {TbCategory} from "react-icons/tb";
+import {TbBrandApple, TbCategory} from "react-icons/tb";
 import CategoriesPanel from "../../components/CategoriesPanel/index.jsx";
 import UsersPanel from "../../components/UsersPanel/index.jsx";
 import Cookies from "js-cookie";
@@ -17,6 +17,8 @@ import {MdConstruction} from "react-icons/md";
 import BannerPanel from "../../components/BannerPanel/index.jsx";
 import BrandPanel from "../../components/BrandPanel/index.jsx";
 import RightBannerPanel from "../../components/RightBannerPanel/index.jsx";
+import {PiFlagBannerFold} from "react-icons/pi";
+import {CiAlignRight} from "react-icons/ci";
 
 const {Header, Sider, Content} = Layout;
 
@@ -82,17 +84,17 @@ const AdminPanel = () => {
                               },
                               {
                                   key: '4',
-                                  icon: <MdConstruction/>,
+                                  icon: <PiFlagBannerFold/>,
                                   label: 'Banner-lər',
                               },
                               {
                                   key: '5',
-                                  icon: <MdConstruction/>,
+                                  icon: <TbBrandApple/>,
                                   label: 'Brand-lar',
                               },
                               {
                                   key: '6',
-                                  icon: <MdConstruction/>,
+                                  icon: <CiAlignRight/>,
                                   label: 'Sağ Banner-lər',
                               },
                           ]}

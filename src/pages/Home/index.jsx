@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/index.jsx";
 import Sections from "../../components/Sections/index.jsx";
 import Brands from "../../components/Brands/index.jsx";
 import CategoryWrapper from "../../components/CategoryWrapper/index.jsx";
+import Sections1 from "../../components/Sections1/index.jsx";
 
 function Home() {
     return (
@@ -11,7 +12,7 @@ function Home() {
             <Brands/>
             <Sections/>
             <CategoryWrapper/>
-            <Sections/>
+            <Sections1/>
         </section>
     );
 }

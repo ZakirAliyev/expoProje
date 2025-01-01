@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import './index.scss';
 import { useGetAllProductsQuery } from "../../services/usersApi.jsx";
 import AnyLoading from "../AnyLoading/index.jsx";
-import ProductsSwiper from "../ProductsSwiper/index.jsx";
+import ProductsSwiper1 from "../ProductsSwiper1/index.jsx";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-function Sections() {
+function Sections1() {
     const { data: productsData, isLoading: productLoading } = useGetAllProductsQuery();
     const products = productsData?.data;
 
@@ -25,7 +25,7 @@ function Sections() {
     return (
         <section id="sections" data-aos="fade-up">
             <div className="container" data-aos="fade-up">
-                <h2 data-aos="fade-up">Məhsullar</h2>
+                <h2 data-aos="fade-up">Yeni məhsullar</h2>
                 <div className="lineWrapper" data-aos="fade-up">
                     <div
                         className="greenLine"
@@ -35,10 +35,10 @@ function Sections() {
                 {productLoading && (
                     <AnyLoading data-aos="fade-up" />
                 )}
-                <ProductsSwiper data-aos="fade-up" />
+                <ProductsSwiper1 data-aos="fade-up" />
             </div>
         </section>
     );
 }
 
-export default Sections;
+export default Sections1;

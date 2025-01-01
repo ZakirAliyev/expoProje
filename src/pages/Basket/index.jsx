@@ -3,12 +3,13 @@ import {FaTrash} from "react-icons/fa";
 import {
     useDeleteBasketItemMutation,
     useGetBasketItemsQuery,
-    usePostAddBasketItemMutation,
+    usePostAddBasketItemMutation, usePostConfirmBasketMutation,
     usePutDecreaseBasketItemCountMutation
 } from "../../services/usersApi.jsx";
 import {baseURL} from "../../constants.js";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Basket() {
     const {data: getBasketItems, refetch} = useGetBasketItemsQuery();
@@ -61,6 +62,8 @@ function Basket() {
     };
 
     const navigate = useNavigate()
+
+    const [postConfirmBasket] = usePostConfirmBasketMutation()
 
     return (
         <section id="basket">
@@ -197,7 +200,32 @@ function Basket() {
                                 </div>
                             </div>
                         </div>
-                        <button className={"testiq"}>Səbəti təstiqlə</button>
+                        <button className={"testiq"} onClick={async () => {
+                            try {
+                                const response = await postConfirmBasket().unwrap();
+                                if (response?.statusCode === 200) {
+                                    await Swal.fire({
+                                        icon: 'success',
+                                        title: 'Uğurlu',
+                                        text: 'Səbət təstiqləndi!',
+                                    });
+                                    refetch()
+                                } else {
+                                    await Swal.fire({
+                                        icon: 'warning',
+                                        title: '!!!',
+                                        text: 'Beklenmedik bir durum oluştu. Lütfen tekrar deneyin.',
+                                    });
+                                }
+                            } catch (error) {
+                                await Swal.fire({
+                                    icon: 'error',
+                                    title: 'Xəta',
+                                    text: 'Səbəti təsdiq edərkən xəta baş verdi. Yenidən cəhd edin.',
+                                });
+                            }
+                        }}>Səbəti təstiqlə
+                        </button>
                     </div>
                 </div>
             </div>

@@ -46,11 +46,11 @@ function ContactUs() {
     return (
         <section id={"contactUs"}>
             <div className={"container"}>
-                <h2 className={"h2h2"}>Contact us</h2>
+                <h2 className={"h2h2"}>Əlaqə</h2>
                 <div className={"lineWrapper"}>
                     <div className={"greenLine"}></div>
                 </div>
-                <p>Home Page / Contact us</p>
+                <p>Ana səhifə / Əlaqə</p>
                 <div className={"row"} style={{
                     marginTop: '50px'
                 }}>
@@ -90,17 +90,17 @@ function ContactUs() {
                 }}>
                     <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>
                         <form onSubmit={formik.handleSubmit}>
-                            <h2>Application Form</h2>
+                            <h2>Mesaj formu</h2>
                             <input
                                 required
-                                placeholder={"Name, surname *"}
+                                placeholder={"Ad, soyad *"}
                                 name={"fullName"}
                                 onChange={formik.handleChange}
                                 value={formik.values.firstName}
                             />
                             <input
                                 required
-                                placeholder={"Title *"}
+                                placeholder={"Mətn *"}
                                 name={"title"}
                                 onChange={formik.handleChange}
                                 value={formik.values.firstName}
@@ -115,13 +115,13 @@ function ContactUs() {
                             />
                             <textarea
                                 required
-                                placeholder={"Message *"}
+                                placeholder={"Mesaj *"}
                                 name={"message"}
                                 rows={5}
                                 onChange={formik.handleChange}
                                 value={formik.values.firstName}
                             />
-                            <button type={"submit"}>Send</button>
+                            <button type={"submit"}>Göndər</button>
                         </form>
                     </div>
                     <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>

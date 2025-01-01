@@ -101,7 +101,10 @@ function BottomNavbar() {
                             onMouseEnter={() => setActiveCategory(category.id)}
                             onMouseLeave={handleMouseLeave}
                             className={`categoryItem ${activeCategory === category.id ? 'active' : ''}`}
-                            onClick={() => handleCategoryClick(category.name, category.id)}
+                            onClick={() => {
+                                handleCategoryClick(category.name, category.id)
+                                window.location.reload();
+                            }}
                         >
                             {category.name}
                             {activeCategory === category.id && category.subCategories?.length > 0 && (

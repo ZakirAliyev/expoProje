@@ -17,7 +17,7 @@ export default function BrandsSwiper() {
             id="brandsSwiper"
             style={{
                 backgroundColor: 'white',
-                padding: '32px',
+                padding: '16px 32px',
                 boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
                 borderRadius: '20px',
             }}

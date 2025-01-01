@@ -1,6 +1,7 @@
 import './index.scss'
 import shortLogo from '/src/assets/shortLogo.png'
 import {FaFacebook, FaInstagram, FaTelegram, FaTwitter, FaYoutube} from "react-icons/fa";
+import {Link} from "react-router";
 
 function Footer() {
     return (
@@ -12,16 +13,16 @@ function Footer() {
                     </div>
                     <div className={"col-4 col-md-4 col-sm-12 col-xs-12"}>
                         <h2>Linklər</h2>
-                        <p>Haqqımızda</p>
-                        <p>Yeni məhsullar</p>
-                        <p>Qaydalar</p>
-                        <p>Əlaqə</p>
+                        <Link className={"p"} to={`/about`}>Haqqımızda</Link>
+                        <Link className={"p"} to={`/new-products`}>Yeni məhsullar</Link>
+                        <Link className={"p"} to={`/terms`}>Qaydalar</Link>
+                        <Link className={"p"} to={`/contact-us`}>Əlaqə</Link>
                     </div>
                     <div className={"col-4 col-md-4 col-sm-12 col-xs-12"}>
                         <h2>Əlaqə</h2>
-                        <p>Nömrə</p>
-                        <p>Email</p>
-                        <p>Ünvan</p>
+                        <p className={"p"}>Nömrə</p>
+                        <p className={"p"}>Email</p>
+                        <p className={"p"}>Ünvan</p>
                     </div>
                 </div>
                 <div className={"links"}>

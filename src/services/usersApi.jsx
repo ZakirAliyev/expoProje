@@ -257,6 +257,20 @@ export const usersApi = createApi({
                 body: id,
             })
         }),
+
+        getAllProductsByNew: builder.query({
+            query: () => ({
+                url: `/Product/get-all-products-by-new`,
+            }),
+        }),
+
+        postConfirmBasket: builder.mutation({
+            query: (data) => ({
+                url: `/Basket/confirm-basket`,
+                method: 'POST',
+                body: data,
+            })
+        }),
     }),
 })
 export const {
@@ -311,4 +325,8 @@ export const {
     useGetAllRBannersQuery,
     usePostCreateRBannerMutation,
     useDeleteRBannerMutation,
+
+    useGetAllProductsByNewQuery,
+
+    usePostConfirmBasketMutation,
 } = usersApi

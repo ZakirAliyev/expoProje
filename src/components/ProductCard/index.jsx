@@ -12,6 +12,8 @@ import {
     usePostAddBasketItemMutation,
     usePostWishlistAddMutation
 } from "../../services/usersApi.jsx";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 function ProductCard({item, query, categoryId}) {
 
@@ -55,16 +57,31 @@ function ProductCard({item, query, categoryId}) {
         myrefetch1()
     }
 
+    const expoToken = Cookies.get("expoToken");
+
+    const getmessage = async () => {
+        await Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Hesabınıza giriş edin",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    };
 
     return (
         <section id={"productCard"}>
             <div className={"container"}>
                 <div className={"box"}>
                     <div className={"firstWrapper"}>
-                        {item?.isWishlist ? (
-                            <FaHeart onClick={() => removeHeart(item?.id)} className={"icon red"}/>
+                        {expoToken === "null" ? (
+                            <FaRegHeart onClick={() => getmessage()} className={"icon red"}/>
                         ) : (
-                            <FaRegHeart onClick={() => addHeart(item?.id)} className={"icon red"}/>
+                            item?.isWishlist ? (
+                                <FaHeart onClick={() => removeHeart(item?.id)} className={"icon red"}/>
+                            ) : (
+                                <FaRegHeart onClick={() => addHeart(item?.id)} className={"icon red"}/>
+                            )
                         )}
                         <div className={"status"}>
                             {item?.isDiscount ? 'Endirim' : 'Yeni'}
@@ -92,10 +109,17 @@ function ProductCard({item, query, categoryId}) {
                                 <div className={"discountPrice"}>{item?.price}.00 $</div>
                             )}
                         </div>
-                        <button onClick={() => addToCart(item?.id, 1)}>
-                            <IoCartOutline className={"icon"}/>
-                            Əlavə et
-                        </button>
+                        {expoToken === "null" ? (
+                            <button onClick={getmessage}>
+                                <IoCartOutline className={"icon"}/>
+                                Əlavə et
+                            </button>
+                        ) : (
+                            <button onClick={() => addToCart(item?.id, 1)}>
+                                <IoCartOutline className={"icon"}/>
+                                Əlavə et
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

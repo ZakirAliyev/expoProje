@@ -15,10 +15,11 @@ function ProductPanel() {
 
     const {Option, OptGroup} = Select;
 
-    const {data: productsData} = useGetAllProductsQuery();
+    const {data: productsData, refetch: refetchProducts} = useGetAllProductsQuery();
+
     const products = productsData?.data || [];
 
-    const {data: categoriesData} = useGetAllCategoriesTreeQuery();
+    const {data: categoriesData, refetch: refetchCategories} = useGetAllCategoriesTreeQuery();
     const categories = categoriesData?.data || [];
 
     const [categories1, setCategories1] = useState([]);
@@ -112,6 +113,8 @@ function ProductPanel() {
 
             if (response?.statusCode === 201) {
                 alert("Məhsul uğurla əlavə edildi.");
+                refetchProducts()
+                refetchCategories()
             }
             setIsModalVisible(false);
         } catch (error) {
@@ -147,6 +150,7 @@ function ProductPanel() {
 
             if (response?.statusCode === 201) {
                 alert("Məhsul uğurla əlavə edildi.");
+                refetchProducts()
             }
             setIsModalVisible(false);
         } catch (error) {
@@ -206,6 +210,13 @@ function ProductPanel() {
             setIsStockChecked(false);
         }
     }, [editingProduct]);
+
+    useEffect(() => {
+        if (isModalVisible === false) {
+            refetchProducts();
+            refetchCategories();
+        }
+    }, [isModalVisible]);
 
 
     const columns = [

@@ -14,6 +14,8 @@ import {
 import {baseURL} from "../../constants.js";
 import AnyLoading from "../../components/AnyLoading/index.jsx";
 import SimilarSwiper from "../../components/SimilarSwiper/index.jsx";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 function ProductDetails() {
     const {id} = useParams();
@@ -86,6 +88,18 @@ function ProductDetails() {
         refetchBasket()
     }
 
+    const expoToken = Cookies.get("expoToken");
+
+    const getmessage = async () => {
+        await Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Hesabınıza giriş edin",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    };
+
     return (
         <section id="productDetails">
             <div className="container">
@@ -121,10 +135,14 @@ function ProductDetails() {
                     </div>
                     <div className="col-7 col-md-8 col-sm-12 col-xs-12 balaca">
                         <div className="box">
-                            {product?.isWishlist ? (
-                                <FaHeart onClick={() => removeHeart(product?.id)} className={"icon red"}/>
+                            {expoToken === "null" ? (
+                                <FaRegHeart onClick={() => getmessage()} className={"icon red"}/>
                             ) : (
-                                <FaRegHeart onClick={() => addHeart(product?.id)} className={"icon red"}/>
+                                product?.isWishlist ? (
+                                    <FaHeart onClick={() => removeHeart(product?.id)} className={"icon red"}/>
+                                ) : (
+                                    <FaRegHeart onClick={() => addHeart(product?.id)} className={"icon red"}/>
+                                )
                             )}
                             <p>{product?.categoryName}</p>
                             <h2>{product?.name}</h2>
@@ -152,10 +170,17 @@ function ProductDetails() {
                             </div>
 
                             <div className="addButton">
-                                <button onClick={() => addToCart(product.id, count)}>
-                                    <FaShoppingBasket/>
-                                    <span>Səbətə əlavə et</span>
-                                </button>
+                                {expoToken === "null" ? (
+                                    <button onClick={() => getmessage()}>
+                                        <FaShoppingBasket/>
+                                        <span>Səbətə əlavə et</span>
+                                    </button>
+                                ) : (
+                                    <button onClick={() => addToCart(product.id, count)}>
+                                        <FaShoppingBasket/>
+                                        <span>Səbətə əlavə et</span>
+                                    </button>
+                                )}
                             </div>
                             <div className="line"></div>
                             <h2>Məhsul xüsusiyyətləri: </h2>
