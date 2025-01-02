@@ -18,6 +18,8 @@ import Search from "../pages/Search/index.jsx";
 import AdminForm from "../pages/AdminForm/index.jsx";
 import FilterAndSort from "../pages/FilterAndSort/index.jsx";
 import ProfilePage from "../pages/ProfilePage/index.jsx";
+import {ProtectedRoute} from "../auth/ProtectedRoute/index.jsx";
+import ErrorPage from "../pages/ErrorPage/index.jsx";
 
 export const ROUTES = [
     {
@@ -38,7 +40,11 @@ export const ROUTES = [
             },
             {
                 path: '/profile',
-                element: <ProfilePage/>
+                element: (
+                    <ProtectedRoute>
+                        <ProfilePage/>
+                    </ProtectedRoute>
+                )
             },
             {
                 path: '/about',
@@ -62,11 +68,19 @@ export const ROUTES = [
             },
             {
                 path: '/basket',
-                element: <Basket/>
+                element: (
+                    <ProtectedRoute>
+                        <Basket/>
+                    </ProtectedRoute>
+                )
             },
             {
                 path: '/wishlist',
-                element: <Wishlist/>
+                element: (
+                    <ProtectedRoute>
+                        <Wishlist/>
+                    </ProtectedRoute>
+                )
             },
             {
                 path: '/file',
@@ -91,15 +105,29 @@ export const ROUTES = [
             {
                 path: `/category`,
                 element: <FilterAndSort/>
+            },
+            {
+                path: '/*',
+                element: <ErrorPage/>
             }
         ]
     },
     {
         path: '/cp',
-        element: <AdminForm/>,
+        element: (
+            <AdminForm/>
+        )
     },
     {
         path: '/cp/dashboard',
-        element: <AdminPanel/>,
+        element: (
+            <ProtectedRoute>
+                <AdminPanel/>
+            </ProtectedRoute>
+        )
+    },
+    {
+        path: '/*',
+        element: <ErrorPage/>
     }
 ];

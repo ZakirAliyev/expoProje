@@ -36,6 +36,7 @@ function AdminForm() {
                     resetForm()
                     navigate('/cp/dashboard')
                     Cookies.set("expoToken", response?.data?.token)
+                    Cookies.set("expoRole", "Admin")
                 }
             } catch (error) {
                 await Swal.fire({

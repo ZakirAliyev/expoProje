@@ -14,6 +14,12 @@ function App() {
         Cookies.set("expoToken", "null");
     }
 
+    const role = Cookies.get("expoRole");
+
+    if (!role) {
+        Cookies.set("expoRole", "null");
+    }
+
     return (
 
         <RouterProvider router={routes}/>

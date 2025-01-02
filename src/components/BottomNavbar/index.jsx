@@ -14,6 +14,7 @@ import {
 } from "../../services/usersApi.jsx";
 import {useEffect, useState} from "react";
 import {GoHeart} from "react-icons/go";
+import Swal from "sweetalert2";
 
 function BottomNavbar() {
 
@@ -92,6 +93,18 @@ function BottomNavbar() {
         refetch1()
     }, []);
 
+    const expoToken = Cookies.get("expoToken");
+
+    const getmessage = async () => {
+        await Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Hesabınıza giriş edin",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    };
+
     const renderCategories = (categories) => {
         return (
             <ul className="categoryMenu">
@@ -168,7 +181,7 @@ function BottomNavbar() {
                 <div className={"wrapper"}>
                     <div className={"catalogWrapper"}>
                         <HiOutlineSquares2X2 className={"icon"}/>
-                        <span>Kataloq</span>
+                        <span className={"kataloq"}>Kataloq</span>
                         {categories && renderCategories(categories)}
                     </div>
                     <input
@@ -179,22 +192,37 @@ function BottomNavbar() {
                     />
                     <div className={"actionWrapper"}>
                         <div style={{position: 'relative'}}>
-                            <GoHeart
-                                className={"icon"}
-                                style={{marginRight: '10px'}}
-                                onClick={() => navigate('/wishlist')}
-                            />
-                            {token !== "null" && (
-                                <span className={"span"}>{products && products.length}</span>
+                            {token !== "null" ? (
+                                <>
+                                    <span className={"span"}>{products && products.length}</span>
+                                    <GoHeart
+                                        className={"icon"}
+                                        style={{marginRight: '10px'}}
+                                        onClick={() => navigate('/wishlist')}
+                                    />
+                                </>
+                            ) : (
+                                <GoHeart
+                                    className={"icon"}
+                                    style={{marginRight: '10px'}}
+                                    onClick={() => getmessage()}
+                                />
                             )}
                         </div>
                         <div style={{position: 'relative'}}>
-                            <BsHandbag
-                                className={"icon"}
-                                onClick={() => navigate('/basket')}
-                            />
-                            {token !== "null" && (
-                                <span className={"span"}>{basket && basket.length}</span>
+                            {token !== "null" ? (
+                                <>
+                                    <BsHandbag
+                                        className={"icon"}
+                                        onClick={() => navigate('/basket')}
+                                    />
+                                    <span className={"span"}>{basket && basket.length}</span>
+                                </>
+                            ) : (
+                                <BsHandbag
+                                    className={"icon"}
+                                    onClick={() => getmessage()}
+                                />
                             )}
                         </div>
                         <div className={"line1"}></div>
@@ -240,6 +268,7 @@ function BottomNavbar() {
                                     </button>
                                     <button className="hover-button" onClick={() => {
                                         Cookies.set("expoToken", "null");
+                                        Cookies.set("expoRole", "null");
                                         navigate('/');
                                     }}>Çıxış
                                     </button>
@@ -250,7 +279,8 @@ function BottomNavbar() {
                 </div>
             </div>
         </section>
-    );
+    )
+        ;
 }
 
 export default BottomNavbar;

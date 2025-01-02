@@ -1,0 +1,20 @@
+#goTop {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  background-color: #0DA5B5;
+  color: white;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s all ease;
+
+  &:hover {
+    background-color: #0a808c;
+  }
+}

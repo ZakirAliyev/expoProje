@@ -1,0 +1,22 @@
+#errorPage {
+  .container {
+    padding: 150px 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2 {
+      font-size: 100px;
+      color: #0DA5B5;
+    }
+
+    p {
+      font-size: 25px;
+    }
+
+    button {
+      margin-top: 25px;
+    }
+  }
+}

@@ -136,6 +136,7 @@ const AdminPanel = () => {
                             marginLeft: '20px',
                         }} onClick={() => {
                             Cookies.set("expoToken", "null");
+                            Cookies.set("expoRole", "null");
                             navigate('/');
                         }}>Çıxış</button></div>
                     </Header>

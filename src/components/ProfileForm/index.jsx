@@ -113,6 +113,7 @@ function ProfileForm() {
                                     transition: 'all .2s ease'
                                 }} onClick={() => {
                                     Cookies.set("expoToken", "null");
+                                    Cookies.set("expoRole", "null");
                                     navigate('/');
                                 }}>
                                     Çıxış
