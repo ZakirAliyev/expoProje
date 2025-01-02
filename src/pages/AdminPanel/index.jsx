@@ -19,6 +19,7 @@ import BrandPanel from "../../components/BrandPanel/index.jsx";
 import RightBannerPanel from "../../components/RightBannerPanel/index.jsx";
 import {PiFlagBannerFold} from "react-icons/pi";
 import {CiAlignRight} from "react-icons/ci";
+import {Helmet} from "react-helmet-async";
 
 const {Header, Sider, Content} = Layout;
 
@@ -53,6 +54,9 @@ const AdminPanel = () => {
 
     return (
         <section id={"adminPanel"}>
+            <Helmet>
+                <title>Admin panel</title>
+            </Helmet>
             <Layout className={"layout"}>
                 <Sider style={{
                     backgroundColor: '#333'

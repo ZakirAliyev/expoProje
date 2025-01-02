@@ -8,6 +8,7 @@ import expo from "../../assets/logo.png";
 import { Link } from "react-router";
 import { ThreeCircles } from "react-loader-spinner";
 import {useParams} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 
 function RenewPassword() {
     const [postResetPassword] = usePostResetPasswordMutation();
@@ -79,6 +80,9 @@ function RenewPassword() {
 
     return (
         <section id={"forgotPassword"}>
+            <Helmet>
+                <title>Şifrəni yenilə</title>
+            </Helmet>
             <div className="container">
                 <div className={"row row1"}>
                     <div className={"col-3 col-md-3 col-sm-12 col-xs-12 coll"}>

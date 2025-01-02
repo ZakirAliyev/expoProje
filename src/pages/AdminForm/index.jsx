@@ -7,6 +7,7 @@ import {useState} from "react";
 import {ThreeCircles} from "react-loader-spinner";
 import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
+import {Helmet} from "react-helmet-async";
 
 function AdminForm() {
 
@@ -53,6 +54,9 @@ function AdminForm() {
 
     return (
         <section id={"adminForm"}>
+            <Helmet>
+                <title>Admin - Giriş</title>
+            </Helmet>
             <div className={"container"}>
                 <div className={"row"}>
                     <div className={"col-6 col-md-6 col-sm-12 col-xs-12"}>

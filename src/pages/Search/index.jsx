@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard/index.jsx";
 import AnyLoading from "../../components/AnyLoading/index.jsx";
 import Pagination from "../../components/Pagination/index.jsx";
 import { useState } from "react";
+import {Helmet} from "react-helmet-async";
 
 function Search() {
     const location = useLocation();
@@ -27,6 +28,9 @@ function Search() {
 
     return (
         <section id={"search"}>
+            <Helmet>
+                <title>Axtar</title>
+            </Helmet>
             <div className={"container"}>
                 <h2>Axtarış</h2>
                 <div className={"lineWrapper"}>

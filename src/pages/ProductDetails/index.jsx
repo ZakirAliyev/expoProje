@@ -16,6 +16,7 @@ import AnyLoading from "../../components/AnyLoading/index.jsx";
 import SimilarSwiper from "../../components/SimilarSwiper/index.jsx";
 import Swal from "sweetalert2";
 import Cookies from "js-cookie";
+import {Helmet} from "react-helmet-async";
 
 function ProductDetails() {
     const {id} = useParams();
@@ -102,6 +103,9 @@ function ProductDetails() {
 
     return (
         <section id="productDetails">
+            <Helmet>
+                <title>Məhsul haqqında</title>
+            </Helmet>
             <div className="container">
                 <p style={{margin: '8px 8px 4px'}}>Ana səhifə / {product?.categoryName} / {product?.name}</p>
                 <div className="row row1">

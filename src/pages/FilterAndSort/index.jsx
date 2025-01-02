@@ -6,6 +6,7 @@ import {useState, useEffect} from "react";
 import {useGetAllCategoriesTreeQuery, useGetAllProductsByCategoryIdQuery} from "../../services/usersApi.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
 import AnyLoading from "../../components/AnyLoading/index.jsx";
+import {Helmet} from "react-helmet-async";
 
 function FilterAndSort() {
     const [minPrice, setMinPrice] = useState(0);
@@ -75,6 +76,9 @@ function FilterAndSort() {
 
     return (
         <section id="filterAndSort">
+            <Helmet>
+                <title>Kateqoriyalar</title>
+            </Helmet>
             <div className="container">
                 <h2>
                     {categoryName

@@ -23,6 +23,9 @@ function Discounts() {
 
     return (
         <section id={"discounts"}>
+            <Helmet>
+                <title>Endirimlər</title>
+            </Helmet>
             <div className={"container"}>
                 <h2>Endirimlər</h2>
                 <div className={"lineWrapper"}>

@@ -83,10 +83,6 @@ export const ROUTES = [
                 )
             },
             {
-                path: '/file',
-                element: <TestFileUpload/>
-            },
-            {
                 path: `/products/:id`,
                 element: <ProductDetails/>
             },

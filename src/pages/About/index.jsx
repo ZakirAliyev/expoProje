@@ -1,9 +1,13 @@
 import './index.scss'
 import lucky from "/src/assets/logo.png"
+import {Helmet} from "react-helmet-async";
 
 function About() {
     return (
         <section id={"about"}>
+            <Helmet>
+                <title>Haqqımızda</title>
+            </Helmet>
             <div className="container">
                 <h2 className={"h2"}>Haqqımızda</h2>
                 <div className={"lineWrapper"}>

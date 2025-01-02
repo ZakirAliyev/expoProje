@@ -10,6 +10,7 @@ import {baseURL} from "../../constants.js";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
+import {Helmet} from "react-helmet-async";
 
 function Basket() {
     const {data: getBasketItems, refetch} = useGetBasketItemsQuery();
@@ -67,6 +68,9 @@ function Basket() {
 
     return (
         <section id="basket">
+            <Helmet>
+                <title>Səbət</title>
+            </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="col-8 col-md-8 col-sm-12 col-xs-12">

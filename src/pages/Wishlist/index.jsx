@@ -3,6 +3,7 @@ import AnyLoading from "../../components/AnyLoading/index.jsx";
 import ProductCard from "../../components/ProductCard/index.jsx";
 import {useGetWishlistItemsQuery} from "../../services/usersApi.jsx";
 import {useEffect} from "react";
+import {Helmet} from "react-helmet-async";
 
 function Wishlist() {
 
@@ -19,6 +20,9 @@ function Wishlist() {
 
     return (
         <section id={"wishlist"}>
+            <Helmet>
+                <title>İstək siyahısı</title>
+            </Helmet>
             <div className={"container"}>
                 <h2>İstək siyahısı</h2>
                 <div className={"lineWrapper"}>

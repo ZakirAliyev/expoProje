@@ -7,6 +7,7 @@ import expo from "../../assets/logo.png";
 import {Link} from "react-router";
 import {ThreeCircles} from "react-loader-spinner";
 import {useState} from "react";
+import {Helmet} from "react-helmet-async";
 
 function ForgotPassword() {
 
@@ -55,6 +56,9 @@ function ForgotPassword() {
 
     return (
         <section id={"forgotPassword"}>
+            <Helmet>
+                <title>Parolunu unutmusan?</title>
+            </Helmet>
             <div className="container">
                 <div className={"row row1"}>
                     <div className={"col-3 col-md-3 col-sm-12 col-xs-12 coll"}>

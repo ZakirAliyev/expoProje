@@ -5,6 +5,7 @@ import {IoMdMail} from "react-icons/io";
 import {MdLocationOn} from "react-icons/md";
 import {usePostContactSendMutation} from "../../services/usersApi.jsx";
 import Swal from "sweetalert2";
+import {Helmet} from "react-helmet-async";
 
 function ContactUs() {
 
@@ -45,6 +46,9 @@ function ContactUs() {
 
     return (
         <section id={"contactUs"}>
+            <Helmet>
+                <title>Əlaqə</title>
+            </Helmet>
             <div className={"container"}>
                 <h2 className={"h2h2"}>Əlaqə</h2>
                 <div className={"lineWrapper"}>

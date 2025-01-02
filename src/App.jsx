@@ -3,6 +3,7 @@ import {createBrowserRouter} from "react-router";
 import {ROUTES} from "./routes/ROUTES.jsx";
 import {RouterProvider} from "react-router-dom";
 import Cookies from 'js-cookie'
+import {HelmetProvider} from "react-helmet-async";
 
 function App() {
 
@@ -22,7 +23,9 @@ function App() {
 
     return (
 
-        <RouterProvider router={routes}/>
+        <HelmetProvider>
+            <RouterProvider router={routes}/>
+        </HelmetProvider>
     )
 }
 

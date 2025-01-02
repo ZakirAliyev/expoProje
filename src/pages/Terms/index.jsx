@@ -1,10 +1,14 @@
 import './index.scss'
 import car from "/src/assets/car.png"
 import terms1 from "/src/assets/terms1.png"
+import {Helmet} from "react-helmet-async";
 
 function Terms() {
     return (
         <section id={"terms"}>
+            <Helmet>
+                <title>Qaydalar</title>
+            </Helmet>
             <div className="container">
                 <h2 className={"h2"}>Qaydalar</h2>
                 <div className={"lineWrapper"}>
