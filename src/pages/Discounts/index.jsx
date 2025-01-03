@@ -4,6 +4,7 @@ import {useGetAllProductsQuery} from "../../services/usersApi.jsx";
 import AnyLoading from "../../components/AnyLoading/index.jsx";
 import Pagination from "../../components/Pagination/index.jsx";
 import { useState } from "react";
+import {Helmet} from "react-helmet-async";
 
 function Discounts() {
     const { data: productsData, isLoading: productLoading } = useGetAllProductsQuery();

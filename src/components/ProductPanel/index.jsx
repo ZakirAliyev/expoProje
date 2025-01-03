@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './index.scss';
-import {Table, Dropdown, Menu, Input, Modal, Form, InputNumber, Checkbox, Button, Upload, Select} from 'antd';
+import {Table, Dropdown, Menu, Input, Modal, Form, InputNumber, Checkbox, Button, Upload, Select, message} from 'antd';
 import {FaCheckCircle, FaTimesCircle} from 'react-icons/fa';
-import {FiEdit} from 'react-icons/fi';
+import {FiEdit, FiTrash} from 'react-icons/fi';
 import {
-    useDeleteCategoryMutation,
+    useDeleteCategoryMutation, useDeleteProductMutation,
     useGetAllCategoriesTreeQuery,
     useGetAllProductsQuery, usePostCreateProductMutation, usePostUpdateProductMutation,
 } from '../../services/usersApi.jsx';
@@ -218,6 +218,8 @@ function ProductPanel() {
         }
     }, [isModalVisible]);
 
+    const [deleteProduct] = useDeleteProductMutation()
+
 
     const columns = [
         {
@@ -261,6 +263,7 @@ function ProductPanel() {
             title: 'Qiymət',
             dataIndex: 'price',
             key: 'price',
+            render: (price) => <span style={{color: '#454545', fontWeight: '600'}}>{price} AZN</span>,
         },
         {
             title: 'Kateqoriya',
@@ -310,24 +313,46 @@ function ProductPanel() {
             dataIndex: '',
             key: 'x',
             render: (_, record) => (
-                <FiEdit
-                    style={{cursor: 'pointer', fontSize: '18px'}}
-                    onClick={() => {
-                        handleEditClick()
-                        setEditingProduct(record);
-                        setFileList(
-                            record.images?.map((url, index) => ({
-                                uid: index,
-                                name: `Image ${index + 1}`,
-                                status: 'done',
-                                url: baseURL + url,
-                            })) || []
-                        );
-                        setIsDiscountChecked(record.isDiscount);
-                        setIsStockChecked(record.isStock);
-                        setIsModalVisible(true);
-                    }}
-                />
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px'
+                }}>
+                    <FiEdit
+                        style={{cursor: 'pointer', fontSize: '18px'}}
+                        onClick={() => {
+                            handleEditClick()
+                            setEditingProduct(record);
+                            setFileList(
+                                record.images?.map((url, index) => ({
+                                    uid: index,
+                                    name: `Image ${index + 1}`,
+                                    status: 'done',
+                                    url: baseURL + url,
+                                })) || []
+                            );
+                            setIsDiscountChecked(record.isDiscount);
+                            setIsStockChecked(record.isStock);
+                            setIsModalVisible(true);
+                        }}
+                    />
+                    <FiTrash
+                        style={{cursor: 'pointer', fontSize: '18px'}}
+                        onClick={async () => {
+                            try {
+                                const response = await deleteProduct(record?.id).unwrap()
+                                if (response.statusCode === 200) {
+                                    message.success("Məhsul uğurlu silindi!")
+                                    refetchCategories()
+                                    refetchProducts()
+                                }
+                            } catch (error) {
+                                message.error("Xəya baş verdi!")
+                            }
+                        }}
+                    />
+                </div>
             ),
         },
     ];

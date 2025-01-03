@@ -99,7 +99,6 @@ function BrandPanel() {
                 }}>
                     <img
                         style={{
-                            height: '100px',
                             width: '200px',
                             objectFit: 'cover',
                             padding: '0',
@@ -132,7 +131,7 @@ function BrandPanel() {
                 dataSource={brands}
                 rowKey={(record) => record.id}
                 pagination={{
-                    pageSize: 4,
+                    pageSize: 7,
                 }}
             />
             <Modal

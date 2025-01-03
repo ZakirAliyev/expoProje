@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
     const location = useLocation();
     console.log(location)
 
-    if (!token || role === "null") {
+    if (token === "null" || role === "null") {
         // Eğer token yoksa veya rol null ise Home sayfasına yönlendirilir
         if (location.pathname === "/profile" || location.pathname === "/basket" || location.pathname === "/wishlist") {
             return <Navigate to="/" replace state={{from: location}}/>;
@@ -24,6 +24,10 @@ const ProtectedRoute = ({children}) => {
     }
 
     if (role === "Admin") {
+        return children;
+    }
+
+    if (token !== "null" && role === "User") {
         return children;
     }
 

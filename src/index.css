@@ -8,6 +8,10 @@
     font-family: "Montserrat", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 button, a, .link, .icon, img {
     transition: all .2s ease;
 }

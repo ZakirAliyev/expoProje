@@ -16,7 +16,7 @@ function Footer() {
                         <Link className={"p"} to={`/about`}>Haqqımızda</Link>
                         <Link className={"p"} to={`/new-products`}>Yeni məhsullar</Link>
                         <Link className={"p"} to={`/terms`}>Qaydalar</Link>
-                        <Link className={"p"} to={`/contact-us`}>Əlaqə</Link>
+                        <Link className={"p"} to={`/contact`}>Əlaqə</Link>
                     </div>
                     <div className={"col-4 col-md-4 col-sm-12 col-xs-12"}>
                         <h2>Əlaqə</h2>

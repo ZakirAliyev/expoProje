@@ -105,7 +105,7 @@ function RightBannerPanel() {
                     <img
                         style={{
                             aspectRatio: '16 / 9',
-                            height: '150px',
+                            width: '450px',
                             objectFit: 'cover',
                             padding: '0',
                             borderRadius: '10px',
@@ -137,7 +137,7 @@ function RightBannerPanel() {
                 dataSource={banners}
                 rowKey={(record) => record.id}
                 pagination={{
-                    pageSize: 3,
+                    pageSize: 2,
                 }}
             />
             <Modal

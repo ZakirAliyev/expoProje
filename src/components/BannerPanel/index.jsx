@@ -100,8 +100,8 @@ function BannerPanel() {
                     <img
                         style={{
                             aspectRatio: '16 / 9',
-                            height: '150px',
                             objectFit: 'cover',
+                            width: '500px',
                             padding: '0',
                             borderRadius: '10px',
                         }}
@@ -132,7 +132,7 @@ function BannerPanel() {
                 dataSource={banners}
                 rowKey={(record) => record.id}
                 pagination={{
-                    pageSize: 3,
+                    pageSize: 2,
                 }}
             />
             <Modal

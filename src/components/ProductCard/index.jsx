@@ -102,11 +102,11 @@ function ProductCard({item, query, categoryId}) {
                         <div className={"text"}>
                             {item?.isDiscount ? (
                                 <>
-                                    <div className={"price"}>{item?.price}.00 $</div>
-                                    <div className={"discountPrice"}>{item?.discountPrice}.00 $</div>
+                                    <div className={"price"}>{item?.price} AZN</div>
+                                    <div className={"discountPrice"}>{item?.discountPrice} AZN</div>
                                 </>
                             ) : (
-                                <div className={"discountPrice"}>{item?.price}.00 $</div>
+                                <div className={"discountPrice"}>{item?.price} AZN</div>
                             )}
                         </div>
                         {expoToken === "null" ? (
