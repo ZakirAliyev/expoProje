@@ -183,7 +183,7 @@ function Basket() {
                                 <div className="boxx">
                                     <span>Cəmi məhsul</span>
                                     <span>
-                                      {basket.reduce((acc, item) => acc + item.price * item.count, 0)} AZN
+                                      {basket.reduce((acc, item) => acc + item.price * item.count, 0).toFixed(2)} AZN
                                     </span>
                                 </div>
                                 <div className="boxx">
@@ -194,7 +194,7 @@ function Basket() {
                                     <div className="boxx2">
                                         <span>Toplam endirim</span>
                                         <span style={{color: '#15DC03', fontWeight: '600'}}>
-                                            {basket.reduce((acc, item) => acc + item.totalDiscount, 0)} AZN
+                                            {basket.reduce((acc, item) => acc + item.totalDiscount, 0).toFixed(2)} AZN
                                         </span>
                                     </div>
                                     <div style={{fontSize: '10px', maxWidth: '200px', width: '100%', padding: '0 8px'}}>
@@ -204,7 +204,7 @@ function Basket() {
                                 <div className="line"></div>
                                 <div className="boxx boxx3">
                                     <span>Cəmi</span>
-                                    <span>{basket.reduce((acc, item) => acc + item.price * item.count, 0)} AZN</span>
+                                    <span>{basket.reduce((acc, item) => acc + item.price * item.count, 0).toFixed(2)} AZN</span>
                                 </div>
                             </div>
                         </div>
