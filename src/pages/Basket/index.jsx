@@ -7,10 +7,12 @@ import {
     usePutDecreaseBasketItemCountMutation
 } from "../../services/usersApi.jsx";
 import {baseURL} from "../../constants.js";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import {Helmet} from "react-helmet-async";
+import AnyLoading from "../../components/AnyLoading/index.jsx";
+import {ThreeCircles} from "react-loader-spinner";
 
 function Basket() {
     const {data: getBasketItems, refetch} = useGetBasketItemsQuery();
@@ -65,6 +67,8 @@ function Basket() {
     const navigate = useNavigate()
 
     const [postConfirmBasket] = usePostConfirmBasketMutation()
+
+    const [loading1, setLoading1] = useState(false)
 
     return (
         <section id="basket">
@@ -205,6 +209,7 @@ function Basket() {
                             </div>
                         </div>
                         <button className={"testiq"} onClick={async () => {
+                            setLoading1(true)
                             try {
                                 const response = await postConfirmBasket().unwrap();
                                 if (response?.statusCode === 200) {
@@ -228,7 +233,19 @@ function Basket() {
                                     text: 'Səbəti təsdiq edərkən xəta baş verdi. Yenidən cəhd edin.',
                                 });
                             }
-                        }}>Səbəti təstiqlə
+                            setLoading1(false)
+                        }}>{loading1 ? (
+                            <div style={{
+                                width: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                <ThreeCircles color={"white"} size={12} height="30" width="30"/>
+                            </div>
+                        ) : (
+                            <>Səbəti təstiqlə</>
+                        )}
                         </button>
                     </div>
                 </div>

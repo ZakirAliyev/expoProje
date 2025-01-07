@@ -13,13 +13,14 @@ import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import ProductPanel from "../../components/ProductPanel/index.jsx";
 import {FaUsers} from "react-icons/fa";
-import {MdConstruction} from "react-icons/md";
+import {MdBookmarkBorder, MdConstruction} from "react-icons/md";
 import BannerPanel from "../../components/BannerPanel/index.jsx";
 import BrandPanel from "../../components/BrandPanel/index.jsx";
 import RightBannerPanel from "../../components/RightBannerPanel/index.jsx";
 import {PiFlagBannerFold} from "react-icons/pi";
 import {CiAlignRight} from "react-icons/ci";
 import {Helmet} from "react-helmet-async";
+import OrderPanel from "../../components/OrderPanel/index.jsx";
 
 const {Header, Sider, Content} = Layout;
 
@@ -45,6 +46,8 @@ const AdminPanel = () => {
                 return <BrandPanel/>;
             case '6':
                 return <RightBannerPanel/>;
+            case '7':
+                return <OrderPanel/>;
             default:
                 return <></>;
         }
@@ -100,6 +103,11 @@ const AdminPanel = () => {
                                   key: '6',
                                   icon: <CiAlignRight/>,
                                   label: 'Sağ Banner-lər',
+                              },
+                              {
+                                  key: '7',
+                                  icon: <MdBookmarkBorder/>,
+                                  label: 'Sifarişlər',
                               },
                           ]}
                     />

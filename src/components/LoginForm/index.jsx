@@ -101,7 +101,7 @@ function LoginForm() {
                                 <div className={"col-12 col-md-12 col-sm-12 col-xs-12"}>
                                     <input
                                         required
-                                        placeholder={"Password"}
+                                        placeholder={"Şifrə"}
                                         type={"password"}
                                         name="password"
                                         onChange={formik.handleChange}

@@ -23,6 +23,7 @@ function BottomNavbar() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
+            console.log(scrollY)
             setTopOffset(Math.max(0, 72 - scrollY));
         };
 
@@ -242,9 +243,7 @@ function BottomNavbar() {
                                     color: '#0DA5B5',
                                     fontWeight: '500',
                                     cursor: 'pointer',
-                                }} onClick={() => {
-                                    navigate('/profile')
-                                }}>{user?.userName}!</span>
+                                }} onClick={handleUserIconClick}>{user?.userName}!</span>
                                 </p>
                             )}
                         </div>
@@ -265,6 +264,9 @@ function BottomNavbar() {
                                     <button className="hover-button1" disabled>{user?.userName}</button>
                                     <button className="hover-button" onClick={() => navigate('/profile')}>Şəxsi
                                         kabinet
+                                    </button>
+                                    <button className="hover-button" onClick={() => navigate('/orders')}>
+                                        Sifarişlərim
                                     </button>
                                     <button className="hover-button" onClick={() => {
                                         Cookies.set("expoToken", "null");

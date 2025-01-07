@@ -278,6 +278,36 @@ export const usersApi = createApi({
                 method: 'DELETE',
             }),
         }),
+
+        getAllOrders: builder.query({
+            query: () => ({
+                url: `/Order/get-all-orders`,
+            }),
+        }),
+        putCancelOrder: builder.mutation({
+            query: (id) => ({
+                url: `/Order/cancel-order/${id}`,
+                method: 'PUT',
+            })
+        }),
+        putConfirmOrder: builder.mutation({
+            query: (id) => ({
+                url: `/Order/confirm-order/${id}`,
+                method: 'PUT',
+            })
+        }),
+        deleteOrder: builder.mutation({
+            query: (id) => ({
+                url: `/Order/delete-order/${id}`,
+                method: 'DELETE',
+            })
+        }),
+
+        getAllOrdersByUser: builder.query({
+            query: () => ({
+                url: `/Order/get-orders-by-user`,
+            }),
+        }),
     }),
 })
 export const {
@@ -337,5 +367,11 @@ export const {
 
     usePostConfirmBasketMutation,
 
-    useDeleteProductMutation
+    useDeleteProductMutation,
+
+    useGetAllOrdersQuery,
+    usePutCancelOrderMutation,
+    usePutConfirmOrderMutation,
+    useDeleteOrderMutation,
+    useGetAllOrdersByUserQuery
 } = usersApi

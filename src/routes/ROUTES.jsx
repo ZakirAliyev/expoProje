@@ -20,6 +20,7 @@ import FilterAndSort from "../pages/FilterAndSort/index.jsx";
 import ProfilePage from "../pages/ProfilePage/index.jsx";
 import {ProtectedRoute} from "../auth/ProtectedRoute/index.jsx";
 import ErrorPage from "../pages/ErrorPage/index.jsx";
+import Orders from "../pages/Orders/index.jsx";
 
 export const ROUTES = [
     {
@@ -43,6 +44,14 @@ export const ROUTES = [
                 element: (
                     <ProtectedRoute>
                         <ProfilePage/>
+                    </ProtectedRoute>
+                )
+            },
+            {
+                path: '/orders',
+                element: (
+                    <ProtectedRoute>
+                        <Orders/>
                     </ProtectedRoute>
                 )
             },
