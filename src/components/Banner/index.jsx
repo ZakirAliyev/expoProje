@@ -1,8 +1,5 @@
 import './index.scss'
-import image from '/src/assets/image.jpg'
 import BannerSwiper from "../BannerSwiper/index.jsx";
-import yan1 from '/src/assets/yan1.jpeg'
-import yan2 from '/src/assets/yan2.jpeg'
 import {useGetAllRBannersQuery} from "../../services/usersApi.jsx";
 import {baseURLRBanners} from "../../constants.js";
 
